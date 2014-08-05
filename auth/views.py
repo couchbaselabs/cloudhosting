@@ -56,7 +56,7 @@ def login_user(request):
         
         result = cb.get("user::piushs").value
         
-        
+        result = json.loads(result)        
         
         if (result['password1'] == password) :
                 request.session['username'] = username
