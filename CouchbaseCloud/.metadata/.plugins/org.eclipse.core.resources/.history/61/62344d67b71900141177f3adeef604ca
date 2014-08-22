@@ -1,1 +1,0 @@
-HEAPPROFILE=/tmp/heapprof /opt/membase/bin/memcached [binary args]
