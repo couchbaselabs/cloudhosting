@@ -96,15 +96,10 @@ def _create_node_GCE(request):
     print request['loc']
     print request['projid']
     
-    '''
+    
     gce = Driver('{0}'.format(request['email']), "./PRIV.pem",
                 datacenter='{0}'.format(request['loc']),
-             project='{0}'.format(request['projid']))
-    '''
     
-    gce = Driver('265882800008-3blh6m3ocdfhkm6kl2ihhfsls0a44nd6@developer.gserviceaccount.com', './PRIV.pem',
-             datacenter='us-central1-a',
-             project='poised-resource-658')
     sizes = gce.list_sizes()
 
     for size in sizes:
