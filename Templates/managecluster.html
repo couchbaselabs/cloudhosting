@@ -1,0 +1,165 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+
+
+<html>
+
+
+<table>
+	<tbody>
+		<tr>
+		   <td>
+		    {% load staticfiles %}
+            <img id = "dep1" src="{% static "couchbase_small_gradient.png" %}" >	</img>
+           </td>
+           <td>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           </td>
+           <td>
+           		<div align = "center" class="container" >
+	        <h1   color = "#FC322B">
+	
+	            Couchbase Cloud Hosting
+	  
+	        </h1>
+	        
+	        <h2>
+	
+	            Couchbase Labs
+	
+	        </h2>
+	        
+	    </div>
+           		
+          
+           </td>
+		</tr>
+	</tbody>
+
+</table>
+
+
+<div id="body" class="backgroundImage">
+
+    <div class="account ui-corner-all">
+
+        <div class="title ui-corner-all">
+            <span><h3>Manage Couchbase Deployment</h3></span>
+        </div>
+
+
+        <script type="text/javascript"  >
+			function OnSubmitForm()
+			{
+				
+				if (document.getElementById("1").checked)
+				{
+					document.getElementById('mngcluster').action ="/Add/";
+				}
+				else if (document.getElementById("2").checked)
+				{
+					document.getElementById('mngcluster').action ="/Del/";
+				}
+			}
+		</script>
+        <form id="mngcluster" class="content"   onsubmit = "return OnSubmitForm()" method="POST">
+
+
+            <input type="hidden" name="r" value=""/>
+
+            
+            <!-- - -
+                <h3>Bucket</h3>
+                <select id ="bucket" name="bucket">
+                   {% for bk in temp.bucket %}
+                   
+                       <option name="{{ bk.bucketname}}">{{ bk.bucketname }}</option>
+                   {% endfor %}
+                   
+                -->
+                
+                Deployment :: {{ temp.request.depname }}
+                <br/>
+                <br/>
+                <input type="radio" onclick = "hideInstance()"name="operation" id = "2" value="2" checked>Delete Instance
+   				 <br/> <br/>
+                </select>
+                
+                <h3> Instances  </h3>
+                   
+                    <table>
+	                   <tbody>
+	                {% for vm in temp.vm %}
+
+                       <tr>
+                         <td>
+               				<input type="checkbox" id ="{{ vm.dns}}" name="ck" value = "{{ vm.dns}}"/>{{ vm.dns}}  <a href = "http://{{ vm.dns}}:8091" >Manage</a><br> 
+               			</td>
+               		   </tr>      
+	                {% endfor %}
+	                   </tbody>
+	               </table>
+        
+                <br/>
+                <br/>
+                
+                <script>
+                	function showInstances()
+                	{
+                		document.getElementById("addquery").style.visibility = "visible"
+                	}
+                	
+                	function hideInstances()
+                	{
+                		document.getElementById("addquery").style.visibility = "hidden"
+                	}
+                </script>
+                <input type="radio" name="operation" onclick ="showInstances()" id = "1" value="1" >Add instance
+   				
+   				<br/>
+   				<br/>
+   				<div id = "addquery" style = "visibility:hidden">
+	   				<h3> Specify the number of instances below</h3>
+	   				<input type="text" name ="number" >
+   				</div>
+   				<br/>
+   				<br/>
+   				
+   				<input type = "text" style ="visibility:hidden" name = "inslist"/>
+   				<input type = "text" style ="visibility:hidden" name = "testlist"/>
+   				<input type="submit" name="Submit" value ="Submit">
+   				
+   				<input type = "text" style = "visibility:hidden" name = "hiduname" id = "hiduname"/>
+   				
+   				<script>
+   				   document.getElementById ("hiduname").value = "{{ username }}"
+   				</script>
+            
+                <!-- 
+                <button id = "xdcr" style = "visibility : hidden" type = "submit" formaction = '/xdcrsetup/'>XDCR</button>
+                <script>
+                    var opr = "{{temp.operation}}"
+                    
+                    if (opr == "2")
+                   	{
+                		document.getElementById("xdcr").style.visibility = "visible"
+                   	}
+                </script>
+                -- -->
+           
+        </form>
+    </div>
+</div> <!-- END #body -->
+</body>
+</html>
+
+

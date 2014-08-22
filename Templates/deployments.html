@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+
+
+<html>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+	
+	
+	     
+	     $(document).ready(function(){
+	    	  $("select").change(function(){
+	    	    
+	    		  if (document.getElementById("deplist").value != "Select")
+				    {
+  			    	
+  			    	document.getElementById("mngcloud").style.visibility = "visible"
+  			    	document.getElementById("depdetails").style.visibility = "visible"
+				    }
+					else
+				    {
+						document.getElementById("mngcloud").style.visibility = "hidden"
+						document.getElementById("depdetails").style.visibility = "hidden"
+				    }
+	    		  var DATA = {'deplist':document.getElementById('deplist').value,
+	    				       'username':document.getElementById ("hiduname").value };
+	    			console.log(DATA);
+	    				
+	    			$.ajax({
+	    			    url: '/getDeployment/',
+	    			    data:DATA,
+	    			    type: 'POST',
+	    			    success: function(stre) {
+	    			    	console.log(stre)
+	    			    	var str=""
+	    			    	
+	    					if (document.getElementById("deplist").value != "Select")
+	    				    {
+		    			    	document.getElementById("pr").innerHTML = stre.provider
+		    			    	document.getElementById ("ins").innerHTML = stre.cpus
+		    			    	document.getElementById("loc").innerHTML = stre.loc
+		    			    	document.getElementById("mcsz").innerHTML = stre.machine
+		    			    	document.getElementById("mngcloud").style.visibility = "visible"
+		    			    	document.getElementById("depdetails").style.visibility = "visible"
+	    				    }
+	    					else
+	    				    {
+	    						document.getElementById("mngcloud").style.visibility = "visible"
+	    						document.getElementById("depdetails").style.visibility = "hidden"
+	    				    }
+	    			    }
+	    			});   
+	    		    	    
+	    	  });
+	    	});
+	
+	</script>
+	
+<table>
+	<tbody>
+		<tr>
+		   <td>
+		    {% load staticfiles %}
+            <img id = "dep1" src="{% static "couchbase_small_gradient.png" %}" >	</img>
+           </td>
+           <td>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           </td>
+           <td>
+           		<div align = "center" class="container" >
+	        <h1   color = "#FC322B">
+	
+	            Couchbase Cloud Hosting
+	  
+	        </h1>
+	        
+	        <h2>
+	
+	            Couchbase Labs
+	
+	        </h2>
+	        
+	    </div>
+           		
+          
+           </td>
+		</tr>
+	</tbody>
+
+</table>
+<hr/>
+	        <hr/>
+	 
+
+
+<div id="body" class="backgroundImage">
+
+    <div class="account ui-corner-all">
+ 
+        <form id="depform" name = "depform" class="content" action="/mngcluster/" method="POST"> 
+
+            <script>
+               var dep = []
+               var list = []
+            </script>
+            
+            <script>
+			    function post(event) {
+			        document.getElementById("depform").action = "/couchdep/"
+			        document.getElementById("depform").submit();
+			    }
+			</script>
+            <input type="hidden" name="r" value=""/>
+
+            
+                <div id="deploymentsSection" class="section">
+                <h3>Cloud Deployments</h3>
+                
+                <p id = "depstatus" />
+          
+                
+                <div class="noData"></div>
+              
+                <select  id="deplist" name="deplist">
+                 		
+                 		<script>
+                 			var count =0
+                 			console.log(count)
+                 		</script>
+                 		<option value = "Select"/>Select
+                  		{% for res in result.deploy %}
+                     		<option value="{{ res.request.depname }}">{{res.request.depname}} </option>
+                     		
+                     		
+                     		<script>
+                     	    	var map ={}
+                     	    	
+                     	    	map["name"] = "{{ res.name }}"
+                     	    	map['cpu'] = "{{ res.cpu }}"
+                     	    	map['cbi'] = "{{ res.cbi }}"
+                     	    	map['Provider'] = "{{ res.Provider }}"
+                     	    	dep.push(map)
+                     	    	list.push("{{ res.name }}")
+                     	    	
+                     	    	count = count + 1
+                     	    	document.getElementById("deplist").style.visibility = "visible"
+                     	    </script>
+                     	    	
+                  		{% endfor %} 
+                  	
+			    </select>
+			    
+			    <br/><br/>
+		    <table id = "depdetails" style = "visibility:hidden">
+		    	<tbody>
+		    		<tr>
+		    			<td>
+		    		       <label>Provider : </label>
+		    			</td>
+		    			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		    			<td>
+		    			   <label id = "pr"> </label>
+		    			</td>
+		    		
+		    		</tr>
+		    		
+		    		<tr>
+		    		   <td>
+		    		      <label> Instances : </label>
+		    		    </td>
+		    		    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		    		    <td>
+		    		        <label id = "ins"></label>
+		    		    </td>
+		    		</tr>
+		    		
+		    		<tr>
+		    			<td>
+		    		       <label>Location : </label>
+		    			</td>
+		    			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		    			<td>
+		    			   <label id = "loc"> </label>
+		    			</td>
+		    		
+		    		</tr>
+		    		
+		    		<tr>
+		    			<td>
+		    		       <label>Machine Size : </label>
+		    			</td>
+		    			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		    			<td>
+		    			   <label id = "mcsz"> </label>
+		    			</td>
+		    		
+		    		</tr>
+		    		    	
+		    	
+		    	</tbody>
+		    
+		    </table>    
+			    
+			    <br/><br/>
+			    <table>
+			    	<tbody>
+			    		<tr>
+			    		
+			    			<td>
+			    			<div class="h2ActionBtns" align = "left">
+            	  <!--    <a class="button icon create" href="#" onclick="post()">Create new</a> -->
+            	  <button type = "submit" formaction = '/couchdep/'>Create New</button>
+                </div>
+                </td>
+			    <input type = "hidden" style = "visibilty:visible" id = "hiduname" name = "hiduname"/>
+			    
+			    	<script>
+			    	    document.getElementById ("hiduname").value = "{{ username }}"
+                  		if (count == 0)
+                  		{
+                  			console.log(count)
+                  			document.getElementById("deplist").style.visibility = "hidden"	
+                  			document.getElementById ("depstatus").innerHTML = "You do not have any deployments"
+                  		}
+                  		else
+                  		{
+                  			console.log(count)
+                  		}
+                	</script>
+			    <br> </br>
+			    <td>
+                <input type = "submit" id = "mngcloud" value = "Manage" style = "visibility : hidden" >
+                </div>
+       
+			    			
+			    			</td>
+			    		
+			    		</tr>
+			    	</tbody>
+			    
+			    </table>
+			               
+       
+       		<script name = "text/javascript">
+          
+      			 function getSelectedText(elementId) {
+              			  var elt = document.getElementById(elementId);
+
+               			 if (elt.selectedIndex == -1)
+                    		return null;
+
+               			return elt.options[elt.selectedIndex].text;
+       			 } 
+       
+				 function test()
+				 {
+					     var temp = getSelectedText("deplist")
+					     
+					     var str="";
+			 		     
+					     for (var i=0; i<dep.length; i++)
+					     { 
+					    	    if (temp == dep[i]['name'])
+					    	    {
+					    	    	str = str + dep[i]['name'] + "," + dep[i]['Provider'] + "," + dep[i]['cbi'] + "," + dep[i]['cpu'] + "\n"
+					    	    	document.getElementById('demo').innerHTML = str
+					    	    }
+					     }
+					     
+				 }
+				 
+		    </script> 
+
+			<p id = "demo"> </p>    
+		    
+		            </form>
+    </div>
+</div> <!-- END #body -->
+</body>
+</html>
+
+

@@ -1,0 +1,154 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+
+
+<html>
+
+<table>
+	<tbody>
+		<tr>
+		   <td>
+		    {% load staticfiles %}
+            <img id = "dep1" src="{% static "couchbase_small_gradient.png" %}" >	</img>
+           </td>
+           <td>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           </td>
+           <td>
+           		<div align = "center" class="container" >
+	        <h1   color = "#FC322B">
+	
+	            Couchbase Cloud Hosting
+	  
+	        </h1>
+	        
+	        <h2>
+	
+	            Couchbase Labs
+	
+	        </h2>
+	        
+	    </div>
+           		
+          
+           </td>
+		</tr>
+	</tbody>
+
+</table>
+
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+	
+	
+	     
+	     $(document).ready(function(){
+	    	  $("select").change(function(){
+	    	    
+	    		 if (document.getElementById("pr").value != "Select")
+	    		 {
+	    			 document.getElementById("cont").style.visibility = "visible" 
+	    		 }
+	    		 else
+	    		 {
+	    			 document.getElementById("cont").style.visibility = "hidden" 
+	    		 }
+	    		 if (document.getElementById("pr").value == "AWS") 
+	    	     {
+	    			document.getElementById("view").style.visibility = "visible" 
+	    	     	$("#view").load("../static/providerview.html")
+	    	  	 }
+	    	     else if (document.getElementById("pr").value == "GCE")
+	    	     {
+	    	    	 document.getElementById("view").style.visibility = "visible" 
+	 	    	     	$("#view").load("../static/GCEinfo.html")
+	    	     }
+	    	     else if (document.getElementById("pr").value == "RackSpace")
+	    	     {
+	    	    	 document.getElementById("view").style.visibility = "visible" 
+	 	    	     	$("#view").load("../static/Rackspace.html")
+	    	     }
+	    	     else if (document.getElementById("pr").value == "Azure")
+	    	     {
+	    	    	 document.getElementById("view").style.visibility = "visible" 
+	 	    	     	$("#view").load("../static/Azure.html")
+	    	     }
+	    	     else
+	    	   	 	document.getElementById("view").style.visibility = "hidden"	
+	    	    
+	    	  });
+	    	});
+	
+	</script>
+	
+	
+
+</head>
+
+<div id="body" class="backgroundImage">
+
+    <div class="account ui-corner-all">
+
+        <div class="title ui-corner-all">
+            <span><h3>Deployment Form</h3></span>
+        </div>
+
+        <form id="couchdbform" class="content" action="/deploy/" method="POST" enctype="multipart/form-data"> 
+
+        
+            <table>
+                <tbody>
+                	<tr> 
+                	    <td >
+							<h4 >
+							     Select a Cloud Provider</h4>
+						</td>
+						<td>
+							<select name="provider" id ="pr">
+							     <option>Select</option>
+					   			 <option>AWS </option>
+					   			 <option>GCE</option>
+					   			 <option>RackSpace</option>
+					   			 <option>Azure</option>
+							</select>
+						</td>
+					</tr>
+			    </tbody>
+			</table>	
+			<h4>Cloud Account Configuration and Deployment Details</h4>
+			<input type ="text" id="hiduname" style = "visibility:hidden" name = "hiduname"/>
+			
+			<script>
+			   document.getElementById("hiduname").value = "{{ postval.username }}"
+			</script>
+		
+		
+		<div style="visibility: visible" id = "view">
+		
+	    </div>   
+	    
+	    <br/>
+	    <br/>
+		     
+		<div align= "left" >
+				<input style = "visibility:hidden" type="submit" id ="cont" value ="Continue">
+	    </div>    
+	   </form>
+	   
+	       
+    </div>
+</div> <!-- END #body -->
+</body>
+</html>
+
+
