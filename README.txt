@@ -149,4 +149,16 @@ example
 3. Modify the wsgi.py file to the path of the project
 
 
+=============================================================================
 
+Working 
+
+1. All the HTML Templates are in the Template folder
+2. The handling of client requests are there in auth/views.py file which is responsible for handling the requests from user 
+   and directing the user to the appropriate web page and do the processing
+3. The deployment requests are stored in Couchbase in these views
+4. The Install folder has a file test.py which will trigger the processes (InstanceHadler, install) depending on the value of the request status 
+   in the deployment document in database 
+5. The next part of managing the instances(creation, deletion)  is done in InstanceHadler.py
+6. The part of managing the couchbase deployments (installing couchbase on the instances and setting up the cluster) is done in install.py
+ 
