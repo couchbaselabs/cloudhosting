@@ -1,0 +1,13 @@
+[global]
+username:root
+port:8091
+cli:/opt/membase/bin
+ssh_key:/var/lib/misc/cb/tmp/QAkey.pem
+
+[servers]
+1:127.0.0.1
+
+[membase]
+rest_username:Administrator
+rest_password:password
+

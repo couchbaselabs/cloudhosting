@@ -1,0 +1,94 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+
+
+<html>
+
+
+<div id="body" class="backgroundImage">
+
+    <div class="account ui-corner-all">
+
+        <div class="title ui-corner-all">
+            <span><h1 align="center"; style="font-size: 100%; margin-bottom: 0;">Log in</h1></span>
+        </div>
+
+        <form id="loginform" class="content" action="/dologin" method="POST"> 
+
+
+            <input type="hidden" name="r" value=""/>
+
+            <fieldset >
+                <div>
+                    To manage your CouchDB databases, log in.<p></p>
+                    If you don't have an account, you can
+                    <a id="signuplink" href="/signup/?r=">sign up</a> for free!
+                </div>
+                
+                </br>
+                <div class="tinyLineBreak"></div>
+                <div>
+                    <label>Username</label>
+		        </div>
+
+                <div>
+                    <input class="required" type="text" id="login-username" name="username" value="">
+                </div>
+                </br>
+                <div>
+                    <label>Password</label>
+                </div>
+                <div>
+                    <input class="required" type="password" id="login-password" name="password">
+                </div>
+                </br>
+
+                <button type=“button” onclick="submitlogin();">Log in</button>
+            </fieldset>
+
+			<p id = "demo" > </p>
+			<script>
+			function submitlogin(){
+			
+    			var username = document.getElementById("login-username");
+    			var password = document.getElementById("login-password");
+    
+   				var data = { username:username, password:password };
+   				var args = { type:"POST", url : "127.0.0.1:8080/login",authdata:data };
+   			$.ajax(args); 
+			document.getElementById("demo").innerHTML = Date();
+			}
+		   </script>
+           
+           
+        </form>
+    </div>
+</div> <!-- END #body -->
+
+<script>
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+</script>
+
+
+</body>
+</html>
+
+

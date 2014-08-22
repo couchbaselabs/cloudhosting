@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;CouchbaseCloud/CouchbaseCloud/Templates/login&apos; to &apos;login.html&apos;" description="Rename resource &apos;login&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="CouchbaseCloud/Templates/login" name="login.html" stamp="1406261647494" updateReferences="true"/>
+</session>

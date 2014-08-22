@@ -1,0 +1,143 @@
+<div>
+<table id ="GCE">
+        <tbody>	
+               <tr>
+                   <td>
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   </td>
+                   <td>
+                		<h3>Enter the deployment name</h3>
+                   </td>
+                   <td>
+                	    <input name="depname" type = "text">
+                   </td>
+               	
+                   <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   </td>
+                   
+                   <td>
+		     			<h3>Client Email</h3>
+				   </td>
+		
+				   <td>
+		     			<input type="text" name = "email" id="email"/>
+				   </td>
+	          </tr>
+              
+              <tr>  	
+                   <td>
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   </td> 
+                   <td>
+                		<h3>Number of servers</h3>
+                   </td>
+                   <td>
+                		<input name="cpus" type = "text">
+                   </td>
+               
+                   <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   </td>
+                   
+                   <td>
+                		<h3>Project ID</h3>
+                   </td>
+                   <td>
+                		<input name="projid" type = "projid">
+                   </td>
+              </tr>
+              
+              <tr>
+                  <td>
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  </td>
+                  <td>
+						<h3>Select a region</h3>
+				  </td>
+				
+					<td> 
+						<select name="loc">
+	   						<option>us-central1-a</option>
+	   						<option>us-central1-b</option>
+	   						<option>us-central1-c</option>
+						</select>
+					</td>
+						
+	    		  	<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  	</td>
+                  
+                  	<td>
+						<h3>Permissions file</h3>
+					</td>
+				
+				  	<td> 
+						<input type ="text" name="permission" id="permission"/>
+				  	</td>	
+			   </tr>
+		
+		        <tr>
+	    			<td>
+               			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        			</td>
+					<td>
+						<h3>Select a machine</h3>  
+					</td>
+					<td>
+						<select name="machine">
+	    						<option>n1-standard-1</option>
+						</select>       
+					</td>
+			  
+		
+					<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    
+                	</td>
+                    
+                    <td>
+						<h3>Path of the key file</h3>  
+					</td>
+					
+					<td>
+						<input type="file" name="keyfile" id="key">  
+					</td> 
+				</tr>
+				<!-- - --
+				<tr>
+				    <td>
+               			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        			</td>
+					<td>
+							<h3 >Image</h3>
+					</td>
+					<td>
+							<select name="cbserver">
+	    					  	<option>Linux</option>
+	    						<option>Windows</option>
+	    					</select>
+	    			</td>
+        		</tr>
+        		--->
+	</tbody>
+</table>    
+</div>

@@ -1,0 +1,38 @@
+recreatebuckettests.RecreateMembaseBuckets.test_default_moxi
+deletebuckettests.DeleteMembaseBuckets.test_non_default_moxi
+createbuckettests.CreateMembaseBucketsTests.test_default_moxi
+createbuckettests.CreateMembaseBucketsTests.test_default_on_non_default_port
+createbuckettests.CreateMembaseBucketsTests.test_non_default_case_sensitive_different_port
+createbuckettests.CreateMembaseBucketsTests.test_two_replica
+createbuckettests.CreateMembaseBucketsTests.test_valid_length,name_length=100
+createbuckettests.CreateMembaseBucketsTests.test_valid_length,name_length=105
+setgettests.MembaseBucket.test_value_100b
+expirytests.ExpiryTests.test_expired_keys
+memcapable.SimpleSetMembaseBucketDefaultPort.test_set_pos_float_value_pos_flag_key_never_expired
+memcapable.SimpleIncrMembaseBucketDefaultPort.test_incr_with_exist_key_decr_then_incr_never_expired
+memcapable.SimpleDecrMembaseBucketDefaultPort.test_decr_with_exist_key_incr_then_decr_never_expired
+memcapable.GetlTests.test_getl_expired_item
+memcapable.GetlTests.test_getl_thirty
+# move this test out of sanity
+# castest.opschangecas.OpsChangeCasTests.touch_test,value_size=256
+drainratetests.DrainRateTests.test_drain_100k_items
+view.viewquerytests.ViewQueryTests.test_employee_dataset_all_queries,limit=1000,docs-per-day=2,wait_persistence=true,timeout=1200
+view.createdeleteview.CreateDeleteViewTests.test_view_ops,ddoc_ops=update,test_with_view=True,num_ddocs=2,num_views_per_ddoc=3,items=2000,sasl_buckets=1,standard_buckets=1
+rebalance.rebalancein.RebalanceInTests.rebalance_in_with_ops,nodes_in=3,replicas=1,items=5000,doc_ops=create;update;delete
+rebalance.rebalanceout.RebalanceOutTests.rebalance_out_with_ops,nodes_out=3,replicas=2,items=0
+swaprebalance.SwapRebalanceBasicTests.do_test,replica=1,num-buckets=1,num-swap=1
+failover.failovertests.FailoverTests.test_failover_normal,replica=2,load_ratio=1,num_failed_nodes=1
+CCCP.CCCP.test_get_config_client,standard_buckets=1,sasl_buckets=1
+CCCP.CCCP.test_not_my_vbucket_config
+rackzone.rackzonetests.RackzoneTests.test_check_default_zone_create_by_default
+rackzone.rackzonetests.RackzoneTests.test_create_second_default_zone
+rackzone.rackzonetests.RackzoneTests.test_create_zone_with_upper_lower_number_name
+rackzone.rackzonetests.RackzoneTests.test_create_zone_with_upper_lower_number_and_space_name
+rackzone.rackzonetests.RackzoneTests.test_create_zone_with_none_ascii_name
+#CBQE-1326 cbrestore hangs on 2.1-701 build. CouchbaseServer-SanityTest-4Node-Centos64 stuck
+#backup.opsbeforebackup.OpsBeforeBackupTests.CreateUpdateDeleteBeforeBackup,standard_buckets=1,doc_ops=update;delete,sasl_buckets=1,items=10000,command_options=-b default;-t 2,replicas=0,item_flag=4042322160,max_verify=1000
+flush.bucketflush.BucketFlushTests.bucketflush_with_data_ops_moxi,items=100000,data_op=create,use_ascii=False
+# 2 comment out tests below will run separately in sanity test
+# xdcr.biXDCR.bidirectional.load_with_async_ops,replicas=1,items=10000,ctopology=chain,rdirection=bidirection,doc-ops=create-update-delete,doc-ops-dest=create-update-delete
+warmupcluster.WarmUpClusterTest.test_warmUpCluster,num_of_docs=1000
+# rebalance.rebalancein.RebalanceInTests.rebalance_in_with_ops,nodes_in=3,items=0,default_bucket=false,standard_buckets=5,sasl_buckets=5

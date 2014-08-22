@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html id=''>
+<head>
+        
+        <div id="deploymentsSection" class="section">
+          <h2>MongoDB Deployments</h2>
+          
+            <div class="h2ActionBtns" align = "center">
+            	<a class="button icon create" href="/create">Create new</a>
+            </div>
+            
+            <select id = "deplist" onchange="populate_Deplist()">
+            
+           
+            </select>
+              <div class="noData"></div>
+              
+              
+       </div>
+       
+       <script>
+       
+       function populate_Deplist()
+       {
+    	  // var dropList = {"dep1", "dep2"}
+    	  var combolist = document.getElementById ("deplist");
+    	  
+    	  combolist.add("dep1");
+    	  combolist.add("dep2");
+       }
+       </script>
+
+</head>
+</html>
+        
+        
+   

@@ -1,0 +1,387 @@
+
+# Create your views here.
+
+from django.shortcuts import render_to_response
+from django.contrib.auth import authenticate, login
+
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+
+from libcloud.compute.types import Provider
+from libcloud.compute.providers import get_driver
+
+import json
+
+from couchbase import Couchbase
+from couchbase import *
+
+import subprocess
+import os
+from django.conf import settings
+
+import ConfigParser
+from time import sleep
+
+import sys
+
+import copy
+
+
+@csrf_exempt  
+def getRamSize(request):
+    
+    cb = Couchbase.connect(bucket="default", host = "localhost")
+    
+    result = cb.get("Machine").value
+    
+    c = result['AWS'][request.POST.get('machine')]
+    return HttpResponse(c)
+    
+@csrf_exempt  
+def auth_user(request):
+    state = "Please log in below..."
+    
+    cb= Couchbase.connect(bucket="default", host="localhost")
+    diction = {"AWS":{'m3.large': '3584'}}
+    cb.set ("Machine", diction )
+    return render_to_response('auth.html',{'state':state})
+
+@csrf_exempt
+def login_user(request):
+    state = "Please log in below..."
+    
+    cb=Couchbase.connect(bucket='default', host='localhost')
+    
+    username = password = ''
+    if request.POST:
+        
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        try :
+            result = cb.get("user::{0}".format(username)).value
+            print result
+            
+            try :
+                store = result
+                result = json.loads(result)  
+            except:
+                result = store
+                  
+            session = {}
+        
+            if (result['password1'] == password) :
+                session['username'] = username
+                cb.set("SessionDetails",session)
+                return render_to_response("deployments.html",{'result':result})
+            else :
+                return render_to_response("auth.html",{'error':"IU", 'message':"Your username or password is invalid"})  
+        except:
+               return render_to_response("auth.html",{'error':"IU", 'message':"Your username or password is invalid"})        
+ 
+@csrf_exempt
+def register_user(request):
+    return render_to_response('registration.html')
+
+@csrf_exempt
+def create_account(request):
+    
+    cb=Couchbase.connect(bucket='default', host='localhost')
+    
+    uname = request.POST.get('username')
+    password = request.POST.get('password')
+    accountname = request.POST.get('accountName')
+    email = request.POST.get('email')
+    
+    session = {}
+        
+    session['username'] = uname
+    cb.set("SessionDetails",session)
+    
+    value = {'username' : uname, 
+             'password1':password,  
+             'accountName':accountname,
+             'email' :email,
+             'deploy':None}
+    
+    print value['username']
+    
+    cb.set("user::{0}".format(uname),json.dumps(value))
+                                              
+    
+    result = cb.get("user::{0}".format(uname)).value
+    return render_to_response('deployments.html', {'result' :result})
+
+@csrf_exempt
+def couchdep(request) :
+    return render_to_response('couchdbdep.html')
+
+def convert_node_ip_string(st):
+        a = "{0}".format(st)
+        a = a.replace('[', '')
+        a = a.replace('\'','')
+        a = a.replace(']','')
+        return a
+        
+    
+
+@csrf_exempt
+def save_deployment(request):
+    
+    cb=Couchbase.connect(bucket='default', host='localhost')
+    
+    result = cb.get("SessionDetails").value
+    
+    if (result != None):
+        username = result['username']
+    
+    result['deploymentname'] = request.POST.get('depname')
+    
+    cb.set("SessionDetails",result)
+   
+    provider = request.POST.get('provider')
+    
+    'Use the parameters in the request for creating instances'
+    
+    if provider == "AWS":
+        storeReq = copy.deepcopy(request.POST)
+    
+    storeReq['status'] = "WA"
+    storeReq['username'] = username
+    
+    cb.set("DeploymentRequest",storeReq)
+    return render_to_response("couchbaseconfiguration.html",{'machine':storeReq['machine'], 'cpus':storeReq['cpus']})
+
+@csrf_exempt
+def mngcluster(request):
+    
+    
+    cb=Couchbase.connect(bucket='default', host='localhost')
+    
+    result = cb.get ("SessionDetails").value
+
+    result['deploymentname'] = request.POST.get('deplist')
+    
+    cb.set("SessionDetails", result)
+    
+    username = result['username']
+    
+    result = cb.get("user::{0}".format(username)).value
+    dep = request.POST.get('deplist')
+    
+    print result
+    
+    
+    temp ={}
+    
+    try :
+        store = result
+        result = json.loads(result)
+    except:
+        result = store
+   
+    if result ['deploy'] != None :     
+        for res in result['deploy'] :
+            if res['request']['depname'] == dep:
+                temp = res
+                break
+
+    if bool(temp):
+        return render_to_response("managecluster.html", {'temp':temp})
+    else:
+        return render_to_response("deployments.html", None)
+
+@csrf_exempt
+def conf_couchbase(request):
+
+    print "Coming Here"
+    return render_to_response("couchbaseconfiguration.html",None)
+    
+@csrf_exempt
+def install(request):
+    
+    cb = Couchbase.connect (bucket='default', host="localhost")
+    
+    store = cb.get("DeploymentRequest").value
+    
+    store['bucketname'] = request.POST.get('bkname')
+    store['operation'] = request.POST.get('operation')
+    store['replica'] = request.POST.get ('numrep')
+    store['password_sasl'] = request.POST.get('rdpasswd')
+    store['bucket_size'] = request.POST.get('size')
+    store['ramquota'] = request.POST.get('ramquota')
+    
+    
+    store['status'] = 'RDDE'
+    cb.set ("DeploymentRequest", store)
+    
+    return render_to_response("progress.html")
+
+@csrf_exempt
+def mngviewDel(request):
+
+    
+    bucket = request.POST.get("bucket")
+    
+    cb=Couchbase.connect(bucket='default', host='localhost')
+    
+    resultsess = cb.get("SessionDetails").value
+    username = resultsess['username']
+    dep = resultsess['deploymentname']
+    
+    result = cb.get("user::{0}".format(username)).value
+    
+    print result
+
+    
+    deploymentIndex = 0;
+
+    temp ={}
+    for res in result['deploy'] :
+        if res['request']['depname'] == dep:
+            temp = res['request']
+            break
+        deploymentIndex = deploymentIndex + 1
+    
+    resultsess['deploymentIndex'] = deploymentIndex
+
+    machines = request.POST.get('ck')
+    
+     
+       
+    cb.set("SessionDetails",resultsess)
+
+    
+    tempbucket= {}
+    bucketIndex = 0
+    for res in temp['bucket'] :
+        if res['name'] == bucket:
+            tempbucket = res
+            break
+        bucketIndex = bucketIndex + 1
+    
+    
+    location = temp['loc']
+    
+    if  location == 'East':
+        cls = get_driver(Provider.EC2_US_EAST)
+    
+    AWS_EC2_ACCESS_ID = "AKIAIM32BEWJ4F2K2VGQ"
+    AWS_EC2_SECRET_KEY = "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"
+    
+    driver = cls(AWS_EC2_ACCESS_ID, AWS_EC2_SECRET_KEY)
+    
+    ACCESS_KEY_NAME = 'piushs'
+    
+    
+    sizes = driver.list_sizes()
+    
+    for size in sizes:
+        print size
+    
+    MY_SIZE = 'm3.large'
+    MY_IMAGE = 'ami-76817c1e'
+    
+    
+    size = [s for s in sizes if s.id == MY_SIZE][0]
+    
+    image = driver.get_image(MY_IMAGE)
+    
+    nodes = driver.list_nodes()
+    
+    print image
+    print size
+    
+    y = request.POST.get("number")
+    a=0
+    
+    n = int(y);
+    
+    listId = list()
+    for res in result['deploy'][deploymentIndex]['bucket'][bucketIndex]['vm'] : 
+        if (a < n):
+            listId.append(res['nodeid'])
+            del result['deploy'][deploymentIndex]['bucket'][bucketIndex]['vm'][a]
+        else:
+            break
+        a= a+1
+    
+    print list
+    
+    for node in nodes :
+        if (node.id in listId):
+            driver.destroy_node(node)
+                
+    
+    nodes = driver.list_nodes()
+    
+    print result       
+    cb.set("user::{0}".format(username), result)
+       
+    return HttpResponse("Operation Successful")
+    
+    
+@csrf_exempt
+def mngviewAdd(request):
+    
+    cb=Couchbase.connect(bucket='default', host='localhost')
+    
+    resultsess = cb.get("SessionDetails").value
+    username = resultsess['username']
+    dep = resultsess['deploymentname']
+    
+    
+    result = cb.get("user::{0}".format(username)).value
+    
+    print result
+  
+    deploymentIndex = 0;
+
+    temp ={}
+    for res in result['deploy'] :
+        if res['request']['depname'] == dep:
+            temp = res['request']
+            break
+        deploymentIndex = deploymentIndex + 1
+    
+    resultsess['deploymentIndex'] = deploymentIndex
+    
+    cb.set("SessionDetails",resultsess)
+    
+    temp['status'] = 'RDAD'
+    temp['cpus'] = request.POST.get('number')
+    
+    cb.set("DeploymentRequest",temp)
+    
+    return render_to_response ("progress.html")
+
+
+@csrf_exempt
+def poll_state(request):
+    
+    pollcb=Couchbase.connect(bucket='default', host='localhost')
+    
+    result = pollcb.get("requesttable").value
+    
+    c = result['status']
+    
+    c= json.dumps(c)
+    
+    return HttpResponse(c,mimetype='application/json')
+
+
+
+@csrf_exempt
+def poll_ins_state(request):
+    
+    pollcbconn=Couchbase.connect(bucket='default', host='localhost')
+    
+    result = pollcbconn.get("DeploymentRequest").value
+    
+    c = result['status']
+    
+    c= json.dumps(c)
+    return HttpResponse(c,mimetype='application/json')
+
+
+

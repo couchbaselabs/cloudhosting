@@ -1,0 +1,6 @@
+setup.py
+cbbuildout.egg-info/PKG-INFO
+cbbuildout.egg-info/SOURCES.txt
+cbbuildout.egg-info/dependency_links.txt
+cbbuildout.egg-info/entry_points.txt
+cbbuildout.egg-info/top_level.txt

@@ -1,0 +1,101 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+
+
+<html>
+
+
+<div id="body" class="backgroundImage">
+
+	<header>
+	
+	    <div align = "center" class="container" >
+	        <h1  color = "#FC322B">
+	
+	            Couchbase Cloud Hosting
+	
+	        </h1>
+	        <h2>
+	
+	            Couchbase Labs
+	
+	        </h2>
+	    </div>
+	
+	</header>
+    
+    <div class="container">
+
+    <section id="main_content">
+		<h1>
+		    Welcome to Couchbase Cloud Hosting Solution
+		</h1>
+		<p>
+			Couchbase Cloud Hosting will provide you with easy to use solution designer to build and customise a multi-server
+			Couchbase Server environment and provisin it to any cloud providers of you choice in a matter of hours. Easy configurations
+			No hardware tweaking. As soon as the solution is deployed to the cloud, populate it with data and start  development
+		</p>
+		<p>
+			
+		</p>
+		
+		<p>
+		
+			
+		</p>
+     </section>
+    <div class="account ui-corner-all">
+
+        <div class="title ui-corner-all">
+            <span><h1 align="center"; style="font-size: 100%; margin-bottom: 0;">Log in</h1></span>
+        </div>
+
+        <form id="loginform" class="content" action="/login/" method="POST"> 
+
+
+            <input type="hidden" name="r" value=""/>
+
+            <fieldset >
+                <div>
+                    To manage your Couchbase databases, log in.<p></p>
+                    If you don't have an account, you can
+                    <a id="signuplink" href="/signup/">sign up</a> for free!
+                </div>
+                
+                </br>
+                <div class="tinyLineBreak"></div>
+                <div>
+                    <label>Username</label>
+		        </div>
+
+                <div>
+                    <input class="required" type="text" id="login-username" name="username" value="">
+                </div>
+                </br>
+                <div>
+                    <label>Password</label>
+                </div>
+                <div>
+                    <input class="required" type="password" id="login-password" name="password">
+                </div>
+                </br>
+
+                <button type=“button” onclick="submitlogin();">Log in</button>
+                
+                {% ifequal error|stringformat:"s" "IU" %}
+            			<p>{{message}}</p>
+            	{% endifequal %}
+            	
+            </fieldset>           
+            
+            
+        </form>
+    </div>
+</div> <!-- END #body -->
+</body>
+</html>
+
+

@@ -1,0 +1,36 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+
+
+<html>
+
+
+<div id="body" class="backgroundImage">
+
+    <div class="account ui-corner-all">
+
+
+        <form id="messageform" class="content" action="/auth/" method="POST">
+
+
+            <input type="hidden" name="r" value=""/>
+
+            <fieldset >
+
+                <p id="messagege" > </p>
+                <div align = "center">
+                    <button type=“button” onclick="$('#messageform').submit();">Go Back</button>
+                </div>
+            </fieldset>
+           
+           
+        </form>
+    </div>
+</div> <!-- END #body -->
+</body>
+</html>
+
+

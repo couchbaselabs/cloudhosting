@@ -1,0 +1,68 @@
+2014-07-30 22:37:46 | WARNING | MainProcess | MainThread | [data_helper.<module>] Can not import concurrent module. Data for each server will be loaded/retrieved sequentially
+2014-07-30 22:37:46,171 - root - INFO - connecting to ec2-54-91-15-127.compute-1.amazonaws.com with username : ec2-user password :  ssh_key: /Users/piush/Key/piushs.pem
+2014-07-30 22:37:47,095 - root - INFO - Connected to ec2-54-91-15-127.compute-1.amazonaws.com
+2014-07-30 22:37:49,356 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo cat /proc/cpuinfo
+2014-07-30 22:37:50,045 - root - INFO - command executed successfully
+2014-07-30 22:37:50,045 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: df -Th
+2014-07-30 22:37:50,682 - root - INFO - command executed successfully
+2014-07-30 22:37:50,682 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo cat /proc/meminfo
+2014-07-30 22:37:51,339 - root - INFO - command executed successfully
+2014-07-30 22:37:51,339 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: hostname
+2014-07-30 22:37:51,996 - root - INFO - command executed successfully
+2014-07-30 22:37:51,997 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: hostname -d
+2014-07-30 22:37:52,661 - root - INFO - command executed successfully
+2014-07-30 22:37:52,661 - root - INFO - CentOS
+2014-07-30 22:37:52,662 - root - INFO - running rpm -e to remove couchbase-server
+2014-07-30 22:37:52,662 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo rpm -e couchbase-server
+2014-07-30 22:37:53,282 - root - INFO - command executed successfully
+2014-07-30 22:37:53,283 - root - INFO - error: package couchbase-server is not installed
+2014-07-30 22:37:53,283 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo killall -9 beam.smp
+2014-07-30 22:37:53,715 - root - INFO - command executed successfully
+2014-07-30 22:37:53,715 - root - INFO - beam.smp: no process found
+2014-07-30 22:37:53,715 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo killall -9 memcached
+2014-07-30 22:37:54,135 - root - INFO - command executed successfully
+2014-07-30 22:37:54,135 - root - INFO - memcached: no process found
+2014-07-30 22:37:54,135 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo killall -9 moxi
+2014-07-30 22:37:54,566 - root - INFO - command executed successfully
+2014-07-30 22:37:54,566 - root - INFO - moxi: no process found
+2014-07-30 22:37:54,566 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo killall -9 vbucketmigrator
+2014-07-30 22:37:55,068 - root - INFO - command executed successfully
+2014-07-30 22:37:55,068 - root - INFO - vbucketmigrator: no process found
+2014-07-30 22:37:55,068 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo killall -9 couchdb
+2014-07-30 22:37:55,478 - root - INFO - command executed successfully
+2014-07-30 22:37:55,479 - root - INFO - couchdb: no process found
+2014-07-30 22:37:55,479 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo killall -9 epmd
+2014-07-30 22:37:55,896 - root - INFO - command executed successfully
+2014-07-30 22:37:55,897 - root - INFO - epmd: no process found
+2014-07-30 22:37:55,897 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo killall -9 memsup
+2014-07-30 22:37:56,461 - root - INFO - command executed successfully
+2014-07-30 22:37:56,462 - root - INFO - memsup: no process found
+2014-07-30 22:37:56,462 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo killall -9 cpu_sup
+2014-07-30 22:37:56,896 - root - INFO - command executed successfully
+2014-07-30 22:37:56,896 - root - INFO - cpu_sup: no process found
+2014-07-30 22:37:56,896 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo rm -rf /var/opt/membase
+2014-07-30 22:37:57,315 - root - INFO - command executed successfully
+2014-07-30 22:37:57,315 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo rm -rf /opt/membase
+2014-07-30 22:37:57,731 - root - INFO - command executed successfully
+2014-07-30 22:37:57,732 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo rm -rf /etc/opt/membase
+2014-07-30 22:37:58,195 - root - INFO - command executed successfully
+2014-07-30 22:37:58,196 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo rm -rf /var/membase/data/*
+2014-07-30 22:37:58,637 - root - INFO - command executed successfully
+2014-07-30 22:37:58,637 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo rm -rf /opt/membase/var/lib/membase/*
+2014-07-30 22:37:59,112 - root - INFO - command executed successfully
+2014-07-30 22:37:59,113 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo rm -rf /opt/couchbase
+2014-07-30 22:37:59,545 - root - INFO - command executed successfully
+2014-07-30 22:37:59,645 - root - INFO - connecting to ec2-54-91-15-127.compute-1.amazonaws.com with username : ec2-user password :  ssh_key: /Users/piush/Key/piushs.pem
+2014-07-30 22:38:00,489 - root - INFO - Connected to ec2-54-91-15-127.compute-1.amazonaws.com
+2014-07-30 22:38:04,067 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo cat /proc/cpuinfo
+2014-07-30 22:38:04,486 - root - INFO - command executed successfully
+2014-07-30 22:38:04,486 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: df -Th
+2014-07-30 22:38:04,921 - root - INFO - command executed successfully
+2014-07-30 22:38:04,921 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: sudo cat /proc/meminfo
+2014-07-30 22:38:05,341 - root - INFO - command executed successfully
+2014-07-30 22:38:05,341 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: hostname
+2014-07-30 22:38:05,776 - root - INFO - command executed successfully
+2014-07-30 22:38:05,777 - root - INFO - running command.raw on ec2-54-91-15-127.compute-1.amazonaws.com: hostname -d
+2014-07-30 22:38:06,244 - root - INFO - command executed successfully
+2014-07-30 22:38:06,846 - root - INFO - connecting to ec2-54-89-227-173.compute-1.amazonaws.com with username : ec2-user password :  ssh_key: /Users/piush/Key/piushs.pem
+2014-07-30 22:38:42,603 - root - ERROR - Can't establish SSH session: [Errno 61] Connection refused

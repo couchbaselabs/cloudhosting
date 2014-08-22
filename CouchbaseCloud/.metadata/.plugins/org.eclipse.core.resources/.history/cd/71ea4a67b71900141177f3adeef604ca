@@ -1,0 +1,15 @@
+[global]
+username:Administrator
+password:Membase123cb
+port:8091
+data_path:d:/data
+
+[servers]
+1:ec2-204-236-223-11.compute-1.amazonaws.com
+2:ec2-107-20-64-201.compute-1.amazonaws.com
+3:ec2-204-236-211-17.compute-1.amazonaws.com
+4:ec2-23-20-220-20.compute-1.amazonaws.com
+
+[membase]
+rest_username:Administrator
+rest_password:password

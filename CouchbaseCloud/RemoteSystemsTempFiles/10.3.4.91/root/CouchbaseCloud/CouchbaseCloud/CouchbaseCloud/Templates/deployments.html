@@ -1,0 +1,123 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+
+
+<html>
+
+
+<div id="body" class="backgroundImage">
+
+    <div class="account ui-corner-all">
+
+        <div class="title ui-corner-all">
+            <span><h1 align="center"; style="font-size: 100%; margin-bottom: 0;">Deployments</h1></span>
+        </div>
+ 
+        <form id="depform" class="content" action="/mngcluster/" method="POST"> 
+
+            <script>
+               var dep = []
+               var list = []
+            </script>
+            <input type="hidden" name="r" value=""/>
+
+            <fieldset >
+                <div id="deploymentsSection" class="section">
+                <h2>Couchbase Deployments</h2>
+                
+                <p id = "depstatus" />
+          
+                <div class="h2ActionBtns" align = "center">
+            	    <a class="button icon create" href="/couchdep/">Create new</a>
+                </div>
+                <div class="noData"></div>
+              
+                <select  id="deplist" name="deplist">
+                 		
+                 		<script>
+                 			var count =0
+                 			console.log(count)
+                 		</script>
+                  		{% for res in result.deploy %}
+                     		<option value="{{ res.request.depname }}">{{res.request.depname}}</option>
+                     		
+                     		<script>
+                     	    	var map ={}
+                     	    	
+                     	    	map["name"] = "{{ res.name }}"
+                     	    	map['cpu'] = "{{ res.cpu }}"
+                     	    	map['cbi'] = "{{ res.cbi }}"
+                     	    	map['Provider'] = "{{ res.Provider }}"
+                     	    	dep.push(map)
+                     	    	list.push("{{ res.name }}")
+                     	    	
+                     	    	count = count + 1
+                     	    	document.getElementById("deplist").style.visibility = "visible"
+                     	    </script>
+                     	    	
+                  		{% endfor %} 
+                  	
+			    </select>
+			    <input type = "text" style = "visibilty:visible" id = "hiduname" name = "hiduname"/>
+			    
+			    	<script>
+			    	    document.getElementById ("hiduname").value = "{{ res.username }}""
+                  		if (count == 0)
+                  		{
+                  			console.log(count)
+                  			document.getElementById("deplist").style.visibility = "hidden"	
+                  			document.getElementById ("depstatus").innerHTML = "No deployments yet"
+                  		}
+                  		else
+                  		{
+                  			console.log(count)
+                  		}
+                	</script>
+			    <br> </br>
+			    
+                <input type = "submit" value = "Check Deployment" >
+                </div>
+            </fieldset>       
+       
+       		<script name = "text/javascript">
+          
+      			 function getSelectedText(elementId) {
+              			  var elt = document.getElementById(elementId);
+
+               			 if (elt.selectedIndex == -1)
+                    		return null;
+
+               			return elt.options[elt.selectedIndex].text;
+       			 } 
+       
+				 function test()
+				 {
+					     var temp = getSelectedText("deplist")
+					     
+					     var str="";
+			 		     
+					     for (var i=0; i<dep.length; i++)
+					     { 
+					    	    if (temp == dep[i]['name'])
+					    	    {
+					    	    	str = str + dep[i]['name'] + "," + dep[i]['Provider'] + "," + dep[i]['cbi'] + "," + dep[i]['cpu'] + "\n"
+					    	    	document.getElementById('demo').innerHTML = str
+					    	    }
+					     }
+					     
+				 }
+				 
+		    </script> 
+
+			<p id = "demo"> </p>    
+		        
+        </form>
+    </div>
+</div> <!-- END #body -->
+</body>
+</html>
+
+

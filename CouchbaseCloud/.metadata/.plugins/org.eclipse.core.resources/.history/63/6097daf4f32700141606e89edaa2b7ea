@@ -1,0 +1,21 @@
+from couchbase import Couchbase
+import time
+
+
+def main(argv):
+    cb = Couchbase.connect (bucket = 'default', host ="localhost")
+    
+    result = cb.get("DeploymentRequest").value
+    result['status'] = "DDE"
+    cb.set("DeploymentRequest",result) 
+    
+    
+    result = cb.get("DeploymentRequest").value
+    print result
+    rows = cb.query("dev_CB","status",stale="false")
+    c
+    for row in rows :
+       print row.key
+       print row.docid
+    
+    print rows

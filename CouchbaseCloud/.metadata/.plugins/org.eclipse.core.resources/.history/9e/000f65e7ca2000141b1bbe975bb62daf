@@ -1,0 +1,158 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+
+
+<html>
+
+
+<div id="body" class="backgroundImage">
+
+    <div class="account ui-corner-all">
+
+        <div class="title ui-corner-all">
+            <span><h1 align="center"; style="font-size: 100%; margin-bottom: 0;">Deployment Form</h1></span>
+        </div>
+
+        <form id="couchdbform" class="content" action="/deploy/" method="POST"> 
+
+        <fieldset >
+            <table>
+                <tbody>
+                	<tr> 
+                	    <td >
+							<h3 >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							     Select a Cloud Provider</h3>
+						</td>
+						<td>
+							<select name="provider">
+					   					<option>AWS </option>
+							</select>
+						</td>
+					</tr>
+			    </tbody>
+			</table>	
+		</fieldset>
+		
+		<fieldset>
+		        <table>
+		            <tbody>
+		            <input type="hidden" name="r" value=""/>
+							
+		                   <tr>
+		                       <td>
+		                       		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                       		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                       		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                       </td>
+		                       <td>
+		                    		<h3>Enter the deployment name</h3>
+		                    	</td>
+		                    	<td>
+		                    		<input name="depname" type = "text">
+		                    	</td>
+		                    		
+		                    	<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                    	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                    	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                    	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                    	</td>
+		                    	 
+		                    	<td>
+		                    		<h3>Number of servers</h3>
+		                    	</td>
+		                    	<td>
+		                    		<input name="cpus" type = "text">
+		                    	</td>
+		                    </tr>
+		             
+		                   <tr>
+		                        <td>
+		                       		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                       		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                       		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                        </td>
+		                        
+		                     	<td>
+									<h3>Select a Cloud Provider</h3>
+								</td>
+							
+								<td>
+									<select name="provider">
+							   				<option>AWS </option>
+									</select>     
+								</td>
+							
+							    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                    	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                    	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                    	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                    	</td>
+		                    	
+								<td>
+									<h3>Select a region</h3>
+								</td>
+								
+								<td> 
+									<select name="loc">
+							   			<option>East</option>
+							   			<option>West</option>
+							   			<option>SouthEast</option>
+									</select>
+								</td>
+							</tr>
+							
+							<tr>
+							    <td>
+		                       		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                       		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                       		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                        </td>
+								<td>
+									<h3>Select a machine</h3>  
+								</td>
+								<td>
+									<select name="machine">
+							    		<option>m1.large</option>
+							    		<option>m3.large</option>
+							    		<option>m1.small</option>
+									</select>       
+								</td>
+								
+								<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                    	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                    	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                    	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		                    	    
+		                    	</td>
+		                    	
+								<td>
+									<h3>Image</h3>
+								</td>
+								<td>
+									<select name="cbserver">
+							    		<option>Linux</option>
+							    		<option>Windows</option>
+									</select>
+								</td>
+							</tr>
+		            </tbody>
+		          </table>    
+		     </fieldset>   
+		     
+		     <div align= "center">
+						<input type="submit" value ="Deploy">
+			</div>    
+		 </form>
+    </div>
+</div> <!-- END #body -->
+</body>
+</html>
+
+

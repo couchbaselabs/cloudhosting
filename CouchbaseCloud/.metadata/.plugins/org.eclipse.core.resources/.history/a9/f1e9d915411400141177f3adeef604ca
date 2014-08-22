@@ -1,0 +1,18 @@
+'''
+Created on Jul 25, 2014
+
+@author: piush
+'''
+from django.conf.urls import *
+
+#from django.contrib import admin
+#admin.autodiscover()
+
+urlpatterns = patterns('',
+    # Examples:
+    # url(r'^$', 'CouchbaseCloud.views.home', name='home'),
+    # url(r'^blog/', include('blog.urls')),
+
+    #url(r'^login/$', 'login.views.login_user'),
+    
+)

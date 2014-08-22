@@ -1,0 +1,87 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+
+
+<html>
+<header>
+
+    
+	
+	    <div align = "center" class="container" >
+	        {% load staticfiles %}
+            <img id = "dep1" src="{% static "couchbase_small_gradient.jpg" %}" >	</img>
+	        <h1  color = "#FC322B">
+	
+	            Couchbase Cloud Hosting
+	  
+	        </h1>
+	        
+	        <h2>
+	
+	            Couchbase Labs
+	
+	        </h2>
+	        <hr/>
+	        <hr/>
+	    </div>
+	
+	</header>
+
+<div id="body" class="backgroundImage">
+
+	    <div class="account ui-corner-all">
+
+        <div class="title ui-corner-all">
+            <span><h3>Login</h3></span>
+        </div>
+
+        <form id="loginform" class="content" action="/login/" method="POST"> 
+
+            
+         
+            <input type="hidden" name="r" value=""/>
+
+            
+                <div>
+                    To manage your Couchbase databases, log in.<p></p>
+                    If you don't have an account, you can
+                    <a id="signuplink" href="/signup/">sign up</a> for free!
+                </div>
+                
+                </br>
+                <div class="tinyLineBreak"></div>
+                <div>
+                    <label>Username</label>
+		        </div>
+
+                <div>
+                    <input class="required" type="text" id="login-username" name="username" value="">
+                </div>
+                </br>
+                <div>
+                    <label>Password</label>
+                </div>
+                <div>
+                    <input class="required" type="password" id="login-password" name="password">
+                </div>
+                </br>
+
+                <button type=“button” onclick="submitlogin();">Log in</button>
+                
+                {% ifequal error|stringformat:"s" "IU" %}
+            			<p>{{message}}</p>
+            	{% endifequal %}
+            	
+                 
+            
+            
+        </form>
+    </div>
+</div> <!-- END #body -->
+</body>
+</html>
+
+

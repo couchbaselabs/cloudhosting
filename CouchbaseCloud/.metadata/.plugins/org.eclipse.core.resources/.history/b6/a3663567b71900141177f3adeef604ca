@@ -1,0 +1,409 @@
+2014-07-30 22:08:20 | WARNING | MainProcess | MainThread | [data_helper.<module>] Can not import concurrent module. Data for each server will be loaded/retrieved sequentially
+2014-07-30 22:08:20,118 - root - INFO - connecting to ec2-54-211-97-91.compute-1.amazonaws.com with username : ec2-user password :  ssh_key: /Users/piush/Key/piushs.pem
+2014-07-30 22:08:21,402 - root - INFO - Connected to ec2-54-211-97-91.compute-1.amazonaws.com
+2014-07-30 22:08:23,577 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo cat /proc/cpuinfo
+2014-07-30 22:08:23,995 - root - INFO - command executed successfully
+2014-07-30 22:08:23,996 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: df -Th
+2014-07-30 22:08:24,417 - root - INFO - command executed successfully
+2014-07-30 22:08:24,418 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo cat /proc/meminfo
+2014-07-30 22:08:24,850 - root - INFO - command executed successfully
+2014-07-30 22:08:24,850 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: hostname
+2014-07-30 22:08:25,286 - root - INFO - command executed successfully
+2014-07-30 22:08:25,287 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: hostname -d
+2014-07-30 22:08:25,723 - root - INFO - command executed successfully
+2014-07-30 22:08:25,724 - root - INFO - CentOS
+2014-07-30 22:08:25,724 - root - INFO - running rpm -e to remove couchbase-server
+2014-07-30 22:08:25,725 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo rpm -e couchbase-server
+2014-07-30 22:08:29,144 - root - INFO - command executed successfully
+2014-07-30 22:08:29,144 - root - INFO - Stopping couchbase-server
+2014-07-30 22:08:29,145 - root - INFO - warning: /opt/couchbase/var/lib/couchbase/config/config.dat saved as /opt/couchbase/var/lib/couchbase/config/config.dat.rpmsave
+2014-07-30 22:08:29,145 - root - INFO - warning: /opt/couchbase/etc/couchdb/local.ini saved as /opt/couchbase/etc/couchdb/local.ini.rpmsave
+2014-07-30 22:08:29,145 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo killall -9 beam.smp
+2014-07-30 22:08:29,552 - root - INFO - command executed successfully
+2014-07-30 22:08:29,552 - root - INFO - beam.smp: no process found
+2014-07-30 22:08:29,553 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo killall -9 memcached
+2014-07-30 22:08:30,079 - root - INFO - command executed successfully
+2014-07-30 22:08:30,079 - root - INFO - memcached: no process found
+2014-07-30 22:08:30,079 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo killall -9 moxi
+2014-07-30 22:08:30,512 - root - INFO - command executed successfully
+2014-07-30 22:08:30,512 - root - INFO - moxi: no process found
+2014-07-30 22:08:30,513 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo killall -9 vbucketmigrator
+2014-07-30 22:08:30,950 - root - INFO - command executed successfully
+2014-07-30 22:08:30,951 - root - INFO - vbucketmigrator: no process found
+2014-07-30 22:08:30,951 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo killall -9 couchdb
+2014-07-30 22:08:31,382 - root - INFO - command executed successfully
+2014-07-30 22:08:31,382 - root - INFO - couchdb: no process found
+2014-07-30 22:08:31,382 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo killall -9 epmd
+2014-07-30 22:08:31,813 - root - INFO - command executed successfully
+2014-07-30 22:08:31,813 - root - INFO - epmd: no process found
+2014-07-30 22:08:31,813 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo killall -9 memsup
+2014-07-30 22:08:32,246 - root - INFO - command executed successfully
+2014-07-30 22:08:32,247 - root - INFO - memsup: no process found
+2014-07-30 22:08:32,247 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo killall -9 cpu_sup
+2014-07-30 22:08:32,706 - root - INFO - command executed successfully
+2014-07-30 22:08:32,707 - root - INFO - cpu_sup: no process found
+2014-07-30 22:08:32,707 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo rm -rf /var/opt/membase
+2014-07-30 22:08:33,142 - root - INFO - command executed successfully
+2014-07-30 22:08:33,143 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo rm -rf /opt/membase
+2014-07-30 22:08:33,562 - root - INFO - command executed successfully
+2014-07-30 22:08:33,562 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo rm -rf /etc/opt/membase
+2014-07-30 22:08:33,978 - root - INFO - command executed successfully
+2014-07-30 22:08:33,978 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo rm -rf /var/membase/data/*
+2014-07-30 22:08:34,411 - root - INFO - command executed successfully
+2014-07-30 22:08:34,411 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo rm -rf /opt/membase/var/lib/membase/*
+2014-07-30 22:08:34,848 - root - INFO - command executed successfully
+2014-07-30 22:08:34,848 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo rm -rf /opt/couchbase
+2014-07-30 22:08:35,275 - root - INFO - command executed successfully
+2014-07-30 22:08:35,375 - root - INFO - connecting to ec2-54-211-97-91.compute-1.amazonaws.com with username : ec2-user password :  ssh_key: /Users/piush/Key/piushs.pem
+2014-07-30 22:08:36,326 - root - INFO - Connected to ec2-54-211-97-91.compute-1.amazonaws.com
+2014-07-30 22:08:38,499 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo cat /proc/cpuinfo
+2014-07-30 22:08:38,916 - root - INFO - command executed successfully
+2014-07-30 22:08:38,916 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: df -Th
+2014-07-30 22:08:39,351 - root - INFO - command executed successfully
+2014-07-30 22:08:39,351 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo cat /proc/meminfo
+2014-07-30 22:08:39,773 - root - INFO - command executed successfully
+2014-07-30 22:08:39,773 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: hostname
+2014-07-30 22:08:40,194 - root - INFO - command executed successfully
+2014-07-30 22:08:40,195 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: hostname -d
+2014-07-30 22:08:40,600 - root - INFO - command executed successfully
+2014-07-30 22:08:41,215 - root - INFO - connecting to ec2-54-83-181-142.compute-1.amazonaws.com with username : ec2-user password :  ssh_key: /Users/piush/Key/piushs.pem
+2014-07-30 22:08:42,492 - root - INFO - Connected to ec2-54-83-181-142.compute-1.amazonaws.com
+2014-07-30 22:08:44,692 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo cat /proc/cpuinfo
+2014-07-30 22:08:45,118 - root - INFO - command executed successfully
+2014-07-30 22:08:45,118 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: df -Th
+2014-07-30 22:08:45,532 - root - INFO - command executed successfully
+2014-07-30 22:08:45,533 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo cat /proc/meminfo
+2014-07-30 22:08:45,951 - root - INFO - command executed successfully
+2014-07-30 22:08:45,951 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: hostname
+2014-07-30 22:08:46,368 - root - INFO - command executed successfully
+2014-07-30 22:08:46,368 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: hostname -d
+2014-07-30 22:08:46,783 - root - INFO - command executed successfully
+unable to complete the uninstallation:  global name 't' is not defined
+2014-07-30 22:08:47,661 - root - INFO - connecting to ec2-54-83-181-142.compute-1.amazonaws.com with username : ec2-user password :  ssh_key: /Users/piush/Key/piushs.pem
+2014-07-30 22:08:48,520 - root - INFO - Connected to ec2-54-83-181-142.compute-1.amazonaws.com
+2014-07-30 22:08:50,760 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo cat /proc/cpuinfo
+2014-07-30 22:08:51,197 - root - INFO - command executed successfully
+2014-07-30 22:08:51,197 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: df -Th
+2014-07-30 22:08:51,614 - root - INFO - command executed successfully
+2014-07-30 22:08:51,615 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo cat /proc/meminfo
+2014-07-30 22:08:52,033 - root - INFO - command executed successfully
+2014-07-30 22:08:52,034 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: hostname
+2014-07-30 22:08:52,462 - root - INFO - command executed successfully
+2014-07-30 22:08:52,462 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: hostname -d
+2014-07-30 22:08:52,878 - root - INFO - command executed successfully
+2014-07-30 22:08:52,880 - root - INFO - CentOS
+2014-07-30 22:08:52,880 - root - INFO - running rpm -e to remove couchbase-server
+2014-07-30 22:08:52,880 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo rpm -e couchbase-server
+2014-07-30 22:08:55,979 - root - INFO - command executed successfully
+2014-07-30 22:08:55,979 - root - INFO - Stopping couchbase-server
+2014-07-30 22:08:55,980 - root - INFO - warning: /opt/couchbase/var/lib/couchbase/config/config.dat saved as /opt/couchbase/var/lib/couchbase/config/config.dat.rpmsave
+2014-07-30 22:08:55,980 - root - INFO - warning: /opt/couchbase/etc/couchdb/local.ini saved as /opt/couchbase/etc/couchdb/local.ini.rpmsave
+2014-07-30 22:08:55,980 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo killall -9 beam.smp
+2014-07-30 22:08:56,381 - root - INFO - command executed successfully
+2014-07-30 22:08:56,382 - root - INFO - beam.smp: no process found
+2014-07-30 22:08:56,382 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo killall -9 memcached
+2014-07-30 22:08:56,814 - root - INFO - command executed successfully
+2014-07-30 22:08:56,815 - root - INFO - memcached: no process found
+2014-07-30 22:08:56,815 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo killall -9 moxi
+2014-07-30 22:08:57,233 - root - INFO - command executed successfully
+2014-07-30 22:08:57,233 - root - INFO - moxi: no process found
+2014-07-30 22:08:57,233 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo killall -9 vbucketmigrator
+2014-07-30 22:08:57,669 - root - INFO - command executed successfully
+2014-07-30 22:08:57,670 - root - INFO - vbucketmigrator: no process found
+2014-07-30 22:08:57,670 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo killall -9 couchdb
+2014-07-30 22:08:58,096 - root - INFO - command executed successfully
+2014-07-30 22:08:58,096 - root - INFO - couchdb: no process found
+2014-07-30 22:08:58,097 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo killall -9 epmd
+2014-07-30 22:08:58,528 - root - INFO - command executed successfully
+2014-07-30 22:08:58,529 - root - INFO - epmd: no process found
+2014-07-30 22:08:58,529 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo killall -9 memsup
+2014-07-30 22:08:58,947 - root - INFO - command executed successfully
+2014-07-30 22:08:58,948 - root - INFO - memsup: no process found
+2014-07-30 22:08:58,948 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo killall -9 cpu_sup
+2014-07-30 22:08:59,366 - root - INFO - command executed successfully
+2014-07-30 22:08:59,366 - root - INFO - cpu_sup: no process found
+2014-07-30 22:08:59,367 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo rm -rf /var/opt/membase
+2014-07-30 22:08:59,798 - root - INFO - command executed successfully
+2014-07-30 22:08:59,798 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo rm -rf /opt/membase
+2014-07-30 22:09:00,218 - root - INFO - command executed successfully
+2014-07-30 22:09:00,219 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo rm -rf /etc/opt/membase
+2014-07-30 22:09:00,654 - root - INFO - command executed successfully
+2014-07-30 22:09:00,655 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo rm -rf /var/membase/data/*
+2014-07-30 22:09:01,077 - root - INFO - command executed successfully
+2014-07-30 22:09:01,078 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo rm -rf /opt/membase/var/lib/membase/*
+2014-07-30 22:09:01,500 - root - INFO - command executed successfully
+2014-07-30 22:09:01,500 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo rm -rf /opt/couchbase
+2014-07-30 22:09:01,915 - root - INFO - command executed successfully
+2014-07-30 22:09:02,015 - root - INFO - connecting to ec2-54-211-97-91.compute-1.amazonaws.com with username : ec2-user password :  ssh_key: /Users/piush/Key/piushs.pem
+2014-07-30 22:09:02,860 - root - INFO - Connected to ec2-54-211-97-91.compute-1.amazonaws.com
+2014-07-30 22:09:05,061 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo cat /proc/cpuinfo
+2014-07-30 22:09:05,497 - root - INFO - command executed successfully
+2014-07-30 22:09:05,497 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: df -Th
+2014-07-30 22:09:05,914 - root - INFO - command executed successfully
+2014-07-30 22:09:05,914 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo cat /proc/meminfo
+2014-07-30 22:09:06,331 - root - INFO - command executed successfully
+2014-07-30 22:09:06,331 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: hostname
+2014-07-30 22:09:06,748 - root - INFO - command executed successfully
+2014-07-30 22:09:06,748 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: hostname -d
+2014-07-30 22:09:07,165 - root - INFO - command executed successfully
+2014-07-30 22:09:07,776 - root - INFO - connecting to ec2-54-83-181-142.compute-1.amazonaws.com with username : ec2-user password :  ssh_key: /Users/piush/Key/piushs.pem
+2014-07-30 22:09:08,684 - root - INFO - Connected to ec2-54-83-181-142.compute-1.amazonaws.com
+2014-07-30 22:09:10,900 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo cat /proc/cpuinfo
+2014-07-30 22:09:11,330 - root - INFO - command executed successfully
+2014-07-30 22:09:11,330 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: df -Th
+2014-07-30 22:09:11,748 - root - INFO - command executed successfully
+2014-07-30 22:09:11,749 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo cat /proc/meminfo
+2014-07-30 22:09:12,166 - root - INFO - command executed successfully
+2014-07-30 22:09:12,166 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: hostname
+2014-07-30 22:09:12,577 - root - INFO - command executed successfully
+2014-07-30 22:09:12,577 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: hostname -d
+2014-07-30 22:09:13,006 - root - INFO - command executed successfully
+uninstall succeeded
+2014-07-30 22:09:13,627 - root - INFO - connecting to ec2-54-211-97-91.compute-1.amazonaws.com with username : ec2-user password :  ssh_key: /Users/piush/Key/piushs.pem
+2014-07-30 22:09:14,489 - root - INFO - Connected to ec2-54-211-97-91.compute-1.amazonaws.com
+2014-07-30 22:09:16,698 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo cat /proc/cpuinfo
+2014-07-30 22:09:17,148 - root - INFO - command executed successfully
+2014-07-30 22:09:17,148 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: df -Th
+2014-07-30 22:09:17,564 - root - INFO - command executed successfully
+2014-07-30 22:09:17,564 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo cat /proc/meminfo
+2014-07-30 22:09:17,978 - root - INFO - command executed successfully
+2014-07-30 22:09:17,978 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: hostname
+2014-07-30 22:09:18,407 - root - INFO - command executed successfully
+2014-07-30 22:09:18,407 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: hostname -d
+2014-07-30 22:09:18,823 - root - INFO - command executed successfully
+2014-07-30 22:09:18,917 - root - INFO - connecting to ec2-54-211-97-91.compute-1.amazonaws.com with username : ec2-user password :  ssh_key: /Users/piush/Key/piushs.pem
+2014-07-30 22:09:19,771 - root - INFO - Connected to ec2-54-211-97-91.compute-1.amazonaws.com
+2014-07-30 22:09:21,993 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo cat /proc/cpuinfo
+2014-07-30 22:09:22,413 - root - INFO - command executed successfully
+2014-07-30 22:09:22,413 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: df -Th
+2014-07-30 22:09:22,844 - root - INFO - command executed successfully
+2014-07-30 22:09:22,845 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo cat /proc/meminfo
+2014-07-30 22:09:23,261 - root - INFO - command executed successfully
+2014-07-30 22:09:23,261 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: hostname
+2014-07-30 22:09:23,691 - root - INFO - command executed successfully
+2014-07-30 22:09:23,691 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: hostname -d
+2014-07-30 22:09:24,108 - root - INFO - command executed successfully
+2014-07-30 22:09:24,109 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo /sbin/iptables -F
+2014-07-30 22:09:24,532 - root - INFO - command executed successfully
+2014-07-30 22:09:24,532 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo /sbin/iptables -t nat -F
+2014-07-30 22:09:24,946 - root - INFO - command executed successfully
+2014-07-30 22:09:24,946 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: cd /tmp ; D=$(mktemp -d cb_XXXX) ; mv couchbase-server-enterprise_x86_64_3.0.0-966-rel.rpm $D ; mv core.* $D ; rm -f * ; mv $D/* . ; rmdir $D
+2014-07-30 22:09:25,363 - root - INFO - command executed successfully
+2014-07-30 22:09:25,363 - root - INFO - mv: cannot stat ‘core.*’: No such file or directory
+2014-07-30 22:09:25,364 - root - INFO - rm: cannot remove ‘cb_LmbL’: Is a directory
+2014-07-30 22:09:25,364 - root - INFO - rm: cannot remove ‘hsperfdata_root’: Is a directory
+2014-07-30 22:09:25,364 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: cd /tmp;wget -q -O couchbase-server-enterprise_x86_64_3.0.0-966-rel.rpm http://packages.northscale.com/latestbuilds/3.0.0/couchbase-server-enterprise_x86_64_3.0.0-966-rel.rpm;cd /tmp;ls -lh
+2014-07-30 22:10:21,061 - root - INFO - command executed successfully
+2014-07-30 22:10:21,062 - root - INFO - total 191M
+2014-07-30 22:10:21,062 - root - INFO - -rw-rw-r-- 1 ec2-user ec2-user 191M Jul 15 03:15 couchbase-server-enterprise_x86_64_3.0.0-966-rel.rpm
+2014-07-30 22:10:21,063 - root - INFO - drwxr-xr-x 2 root     root     4.0K Jul 30 19:07 hsperfdata_root
+2014-07-30 22:10:21,973 - root - INFO - deliverable_type : rpm
+2014-07-30 22:10:21,974 - root - INFO - /tmp/couchbase-server-enterprise_x86_64_3.0.0-966-rel.rpm or /tmp/
+2014-07-30 22:10:21,974 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo /sbin/sysctl vm.swappiness=0
+2014-07-30 22:10:22,401 - root - INFO - command executed successfully
+2014-07-30 22:10:22,401 - root - INFO - vm.swappiness = 0
+2014-07-30 22:10:22,401 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo cat /etc/redhat-release
+2014-07-30 22:10:22,940 - root - INFO - command executed successfully
+2014-07-30 22:10:22,941 - root - INFO - cat: /etc/redhat-release: No such file or directory
+2014-07-30 22:10:22,941 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo rpm -qa | grep openssl
+2014-07-30 22:10:23,541 - root - INFO - command executed successfully
+2014-07-30 22:10:23,541 - root - INFO - openssl098e-0.9.8e-18.2.14.amzn1.x86_64
+2014-07-30 22:10:23,542 - root - INFO - openssl-1.0.1h-1.75.amzn1.x86_64
+2014-07-30 22:10:23,542 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo yum install -y openssl098e
+2014-07-30 22:10:24,150 - root - INFO - command executed successfully
+2014-07-30 22:10:24,151 - root - INFO - Loaded plugins: priorities, update-motd, upgrade-helper
+2014-07-30 22:10:24,151 - root - INFO - 
+2014-07-30 22:10:24,151 - root - INFO - amzn-main/latest                                         | 2.1 kB     00:00     
+2014-07-30 22:10:24,151 - root - INFO - 
+2014-07-30 22:10:24,151 - root - INFO - amzn-updates/latest                                      | 2.3 kB     00:00     
+2014-07-30 22:10:24,151 - root - INFO - Package openssl098e-0.9.8e-18.2.14.amzn1.x86_64 already installed and latest version
+2014-07-30 22:10:24,151 - root - INFO - Nothing to do
+2014-07-30 22:10:24,151 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo rpm -qa | grep openssl
+2014-07-30 22:10:24,734 - root - INFO - command executed successfully
+2014-07-30 22:10:24,734 - root - INFO - package openssl098e should appear below
+2014-07-30 22:10:24,734 - root - INFO - openssl098e-0.9.8e-18.2.14.amzn1.x86_64
+2014-07-30 22:10:24,735 - root - INFO - openssl-1.0.1h-1.75.amzn1.x86_64
+2014-07-30 22:10:24,735 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo cat /etc/redhat-release
+2014-07-30 22:10:25,164 - root - INFO - command executed successfully
+2014-07-30 22:10:25,165 - root - INFO - cat: /etc/redhat-release: No such file or directory
+2014-07-30 22:10:25,165 - root - INFO - no need to install pkgconfig on couchbase binary using openssl 0.9.8
+2014-07-30 22:10:25,165 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo rpm -i /tmp/couchbase-server-enterprise_x86_64_3.0.0-966-rel.rpm
+2014-07-30 22:10:32,268 - root - INFO - command executed successfully
+2014-07-30 22:10:32,269 - root - INFO - Warning: Transparent hugepages may be used. To disable the usage
+2014-07-30 22:10:32,269 - root - INFO - There is a warning about transparent_hugepage may be in used when install cb server.                              So we will disable transparent_hugepage in this vm
+2014-07-30 22:10:32,269 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo echo never > /sys/kernel/mm/transparent_hugepage/enabled
+2014-07-30 22:10:32,668 - root - INFO - command executed successfully
+2014-07-30 22:10:32,668 - root - INFO - bash: /sys/kernel/mm/transparent_hugepage/enabled: Permission denied
+2014-07-30 22:10:32,668 - root - INFO - of transparent hugepages, set the kernel settings at runtime with
+2014-07-30 22:10:32,668 - root - INFO - echo never > /sys/kernel/mm/transparent_hugepage/enabled
+2014-07-30 22:10:32,668 - root - INFO - Minimum RAM required  : 4 GB
+2014-07-30 22:10:32,668 - root - INFO - System RAM configured : 7.06 GB
+2014-07-30 22:10:32,668 - root - INFO - 
+2014-07-30 22:10:32,668 - root - INFO - Minimum number of processors required : 4 cores
+2014-07-30 22:10:32,669 - root - INFO - Number of processors on the system    : 2 cores
+2014-07-30 22:10:32,669 - root - INFO - 
+2014-07-30 22:10:32,669 - root - INFO - (2, 6, 9, 'final', 0)
+2014-07-30 22:10:32,669 - root - INFO - /sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+2014-07-30 22:10:32,669 - root - INFO - install 2.6 version
+2014-07-30 22:10:32,669 - root - INFO - Starting couchbase-server[  OK  ]
+2014-07-30 22:10:32,669 - root - INFO - 
+2014-07-30 22:10:32,669 - root - INFO - 
+2014-07-30 22:10:32,669 - root - INFO - You have successfully installed Couchbase Server.
+2014-07-30 22:10:32,670 - root - INFO - Please browse to http://ip-10-144-205-208:8091/ to configure your server.
+2014-07-30 22:10:32,670 - root - INFO - Please refer to http://couchbase.com for additional resources.
+2014-07-30 22:10:32,670 - root - INFO - 
+2014-07-30 22:10:32,670 - root - INFO - Please note that you have to update your firewall configuration to
+2014-07-30 22:10:32,670 - root - INFO - allow connections to the following ports: 11211, 11210, 11209, 4369,
+2014-07-30 22:10:32,670 - root - INFO - 8091, 8092, 18091, 18092, 11214, 11215 and from 21100 to 21299.
+2014-07-30 22:10:32,670 - root - INFO - 
+2014-07-30 22:10:32,670 - root - INFO - By using this software you agree to the End User License Agreement.
+2014-07-30 22:10:32,670 - root - INFO - See /opt/couchbase/LICENSE.txt.
+2014-07-30 22:10:32,670 - root - INFO - 
+2014-07-30 22:10:33,161 - root - ERROR - Directory at /tmp DOES exist. Fx returns True
+2014-07-30 22:10:33,161 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo /opt/couchbase/bin/cbenable_core_dumps.sh  /tmp
+2014-07-30 22:10:33,561 - root - INFO - command executed successfully
+2014-07-30 22:10:33,562 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo /etc/init.d/couchbase-server start
+2014-07-30 22:10:35,273 - root - INFO - command executed successfully
+2014-07-30 22:10:35,273 - root - INFO - Starting couchbase-server[60G[[0;32m  OK  [0;39m]
+2014-07-30 22:10:35,273 - root - INFO - 
+2014-07-30 22:10:35,273 - root - INFO - running command.raw on ec2-54-211-97-91.compute-1.amazonaws.com: sudo rm -f *-diag.zip
+2014-07-30 22:10:35,709 - root - INFO - command executed successfully
+2014-07-30 22:10:35,709 - root - INFO - wait 5 seconds for membase server to start
+2014-07-30 22:10:40,739 - root - INFO - connecting to ec2-54-211-97-91.compute-1.amazonaws.com with username : ec2-user password :  ssh_key: /Users/piush/Key/piushs.pem
+2014-07-30 22:10:42,027 - root - INFO - Connected to ec2-54-211-97-91.compute-1.amazonaws.com
+2014-07-30 22:10:45,233 - root - INFO - settings/web params on ec2-54-211-97-91.compute-1.amazonaws.com:8091:username=Administrator&password=password&port=8091
+2014-07-30 22:10:45,655 - root - INFO - pools/default params : memoryQuota=0&username=Administrator&password=password
+2014-07-30 22:10:45,845 - root - ERROR - http://ec2-54-211-97-91.compute-1.amazonaws.com:8091/pools/default error 400 reason: unknown {"errors":{"memoryQuota":"The RAM Quota value is too small. Quota must be between 256 MB and 6204 MB (memory size minus 1024 MB)."}}
+2014-07-30 22:10:45,858 - root - INFO - connecting to ec2-54-83-181-142.compute-1.amazonaws.com with username : ec2-user password :  ssh_key: /Users/piush/Key/piushs.pem
+2014-07-30 22:10:47,147 - root - INFO - Connected to ec2-54-83-181-142.compute-1.amazonaws.com
+2014-07-30 22:10:49,350 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo cat /proc/cpuinfo
+2014-07-30 22:10:49,785 - root - INFO - command executed successfully
+2014-07-30 22:10:49,785 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: df -Th
+2014-07-30 22:10:50,202 - root - INFO - command executed successfully
+2014-07-30 22:10:50,203 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo cat /proc/meminfo
+2014-07-30 22:10:50,646 - root - INFO - command executed successfully
+2014-07-30 22:10:50,646 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: hostname
+2014-07-30 22:10:51,063 - root - INFO - command executed successfully
+2014-07-30 22:10:51,063 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: hostname -d
+2014-07-30 22:10:51,480 - root - INFO - command executed successfully
+2014-07-30 22:10:51,577 - root - INFO - connecting to ec2-54-83-181-142.compute-1.amazonaws.com with username : ec2-user password :  ssh_key: /Users/piush/Key/piushs.pem
+2014-07-30 22:10:52,456 - root - INFO - Connected to ec2-54-83-181-142.compute-1.amazonaws.com
+2014-07-30 22:10:54,688 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo cat /proc/cpuinfo
+2014-07-30 22:10:55,142 - root - INFO - command executed successfully
+2014-07-30 22:10:55,143 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: df -Th
+2014-07-30 22:10:55,562 - root - INFO - command executed successfully
+2014-07-30 22:10:55,562 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo cat /proc/meminfo
+2014-07-30 22:10:55,992 - root - INFO - command executed successfully
+2014-07-30 22:10:55,992 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: hostname
+2014-07-30 22:10:56,424 - root - INFO - command executed successfully
+2014-07-30 22:10:56,425 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: hostname -d
+2014-07-30 22:10:56,841 - root - INFO - command executed successfully
+2014-07-30 22:10:56,843 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo /sbin/iptables -F
+2014-07-30 22:10:57,316 - root - INFO - command executed successfully
+2014-07-30 22:10:57,316 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo /sbin/iptables -t nat -F
+2014-07-30 22:10:57,732 - root - INFO - command executed successfully
+2014-07-30 22:10:57,732 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: cd /tmp ; D=$(mktemp -d cb_XXXX) ; mv couchbase-server-enterprise_x86_64_3.0.0-966-rel.rpm $D ; mv core.* $D ; rm -f * ; mv $D/* . ; rmdir $D
+2014-07-30 22:10:58,148 - root - INFO - command executed successfully
+2014-07-30 22:10:58,148 - root - INFO - mv: cannot stat ‘core.*’: No such file or directory
+2014-07-30 22:10:58,149 - root - INFO - rm: cannot remove ‘cb_ypHM’: Is a directory
+2014-07-30 22:10:58,149 - root - INFO - rm: cannot remove ‘hsperfdata_root’: Is a directory
+2014-07-30 22:10:58,149 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: cd /tmp;wget -q -O couchbase-server-enterprise_x86_64_3.0.0-966-rel.rpm http://packages.northscale.com/latestbuilds/3.0.0/couchbase-server-enterprise_x86_64_3.0.0-966-rel.rpm;cd /tmp;ls -lh
+2014-07-30 22:11:58,142 - root - INFO - command executed successfully
+2014-07-30 22:11:58,142 - root - INFO - total 191M
+2014-07-30 22:11:58,143 - root - INFO - -rw-rw-r-- 1 ec2-user ec2-user 191M Jul 15 03:15 couchbase-server-enterprise_x86_64_3.0.0-966-rel.rpm
+2014-07-30 22:11:58,143 - root - INFO - drwxr-xr-x 2 root     root     4.0K Jul 29 18:34 hsperfdata_root
+2014-07-30 22:11:58,919 - root - INFO - deliverable_type : rpm
+2014-07-30 22:11:58,920 - root - INFO - /tmp/couchbase-server-enterprise_x86_64_3.0.0-966-rel.rpm or /tmp/
+2014-07-30 22:11:58,920 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo /sbin/sysctl vm.swappiness=0
+2014-07-30 22:11:59,318 - root - INFO - command executed successfully
+2014-07-30 22:11:59,319 - root - INFO - vm.swappiness = 0
+2014-07-30 22:11:59,319 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo cat /etc/redhat-release
+2014-07-30 22:11:59,762 - root - INFO - command executed successfully
+2014-07-30 22:11:59,762 - root - INFO - cat: /etc/redhat-release: No such file or directory
+2014-07-30 22:11:59,762 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo rpm -qa | grep openssl
+2014-07-30 22:12:00,363 - root - INFO - command executed successfully
+2014-07-30 22:12:00,364 - root - INFO - openssl098e-0.9.8e-18.2.14.amzn1.x86_64
+2014-07-30 22:12:00,364 - root - INFO - openssl-1.0.1h-1.75.amzn1.x86_64
+2014-07-30 22:12:00,364 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo yum install -y openssl098e
+2014-07-30 22:12:01,234 - root - INFO - command executed successfully
+2014-07-30 22:12:01,234 - root - INFO - Loaded plugins: priorities, update-motd, upgrade-helper
+2014-07-30 22:12:01,234 - root - INFO - 
+2014-07-30 22:12:01,235 - root - INFO - amzn-main/latest                                         | 2.1 kB     00:00     
+2014-07-30 22:12:01,235 - root - INFO - 
+2014-07-30 22:12:01,235 - root - INFO - amzn-updates/latest                                      | 2.3 kB     00:00     
+2014-07-30 22:12:01,235 - root - INFO - Package openssl098e-0.9.8e-18.2.14.amzn1.x86_64 already installed and latest version
+2014-07-30 22:12:01,235 - root - INFO - Nothing to do
+2014-07-30 22:12:01,235 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo rpm -qa | grep openssl
+2014-07-30 22:12:01,841 - root - INFO - command executed successfully
+2014-07-30 22:12:01,842 - root - INFO - package openssl098e should appear below
+2014-07-30 22:12:01,842 - root - INFO - openssl098e-0.9.8e-18.2.14.amzn1.x86_64
+2014-07-30 22:12:01,842 - root - INFO - openssl-1.0.1h-1.75.amzn1.x86_64
+2014-07-30 22:12:01,842 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo cat /etc/redhat-release
+2014-07-30 22:12:02,219 - root - INFO - command executed successfully
+2014-07-30 22:12:02,220 - root - INFO - cat: /etc/redhat-release: No such file or directory
+2014-07-30 22:12:02,220 - root - INFO - no need to install pkgconfig on couchbase binary using openssl 0.9.8
+2014-07-30 22:12:02,220 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo rpm -i /tmp/couchbase-server-enterprise_x86_64_3.0.0-966-rel.rpm
+2014-07-30 22:12:09,414 - root - INFO - command executed successfully
+2014-07-30 22:12:09,415 - root - INFO - Warning: Transparent hugepages may be used. To disable the usage
+2014-07-30 22:12:09,415 - root - INFO - There is a warning about transparent_hugepage may be in used when install cb server.                              So we will disable transparent_hugepage in this vm
+2014-07-30 22:12:09,416 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo echo never > /sys/kernel/mm/transparent_hugepage/enabled
+2014-07-30 22:12:09,816 - root - INFO - command executed successfully
+2014-07-30 22:12:09,816 - root - INFO - bash: /sys/kernel/mm/transparent_hugepage/enabled: Permission denied
+2014-07-30 22:12:09,816 - root - INFO - of transparent hugepages, set the kernel settings at runtime with
+2014-07-30 22:12:09,816 - root - INFO - echo never > /sys/kernel/mm/transparent_hugepage/enabled
+2014-07-30 22:12:09,816 - root - INFO - Minimum RAM required  : 4 GB
+2014-07-30 22:12:09,816 - root - INFO - System RAM configured : 14.44 GB
+2014-07-30 22:12:09,816 - root - INFO - 
+2014-07-30 22:12:09,817 - root - INFO - Minimum number of processors required : 4 cores
+2014-07-30 22:12:09,817 - root - INFO - Number of processors on the system    : 4 cores
+2014-07-30 22:12:09,817 - root - INFO - 
+2014-07-30 22:12:09,817 - root - INFO - (2, 6, 9, 'final', 0)
+2014-07-30 22:12:09,817 - root - INFO - /sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+2014-07-30 22:12:09,817 - root - INFO - install 2.6 version
+2014-07-30 22:12:09,817 - root - INFO - Starting couchbase-server[  OK  ]
+2014-07-30 22:12:09,817 - root - INFO - 
+2014-07-30 22:12:09,817 - root - INFO - 
+2014-07-30 22:12:09,817 - root - INFO - You have successfully installed Couchbase Server.
+2014-07-30 22:12:09,817 - root - INFO - Please browse to http://ip-10-61-174-216:8091/ to configure your server.
+2014-07-30 22:12:09,818 - root - INFO - Please refer to http://couchbase.com for additional resources.
+2014-07-30 22:12:09,818 - root - INFO - 
+2014-07-30 22:12:09,818 - root - INFO - Please note that you have to update your firewall configuration to
+2014-07-30 22:12:09,818 - root - INFO - allow connections to the following ports: 11211, 11210, 11209, 4369,
+2014-07-30 22:12:09,818 - root - INFO - 8091, 8092, 18091, 18092, 11214, 11215 and from 21100 to 21299.
+2014-07-30 22:12:09,818 - root - INFO - 
+2014-07-30 22:12:09,818 - root - INFO - By using this software you agree to the End User License Agreement.
+2014-07-30 22:12:09,818 - root - INFO - See /opt/couchbase/LICENSE.txt.
+2014-07-30 22:12:09,818 - root - INFO - 
+2014-07-30 22:12:10,311 - root - ERROR - Directory at /tmp DOES exist. Fx returns True
+2014-07-30 22:12:10,311 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo /opt/couchbase/bin/cbenable_core_dumps.sh  /tmp
+2014-07-30 22:12:10,705 - root - INFO - command executed successfully
+2014-07-30 22:12:10,706 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo /etc/init.d/couchbase-server start
+2014-07-30 22:12:12,369 - root - INFO - command executed successfully
+2014-07-30 22:12:12,370 - root - INFO - Starting couchbase-server[60G[[0;32m  OK  [0;39m]
+2014-07-30 22:12:12,370 - root - INFO - 
+2014-07-30 22:12:12,370 - root - INFO - running command.raw on ec2-54-83-181-142.compute-1.amazonaws.com: sudo rm -f *-diag.zip
+2014-07-30 22:12:12,778 - root - INFO - command executed successfully
+2014-07-30 22:12:12,778 - root - INFO - wait 5 seconds for membase server to start
+2014-07-30 22:12:17,812 - root - INFO - connecting to ec2-54-83-181-142.compute-1.amazonaws.com with username : ec2-user password :  ssh_key: /Users/piush/Key/piushs.pem
+2014-07-30 22:12:19,250 - root - INFO - Connected to ec2-54-83-181-142.compute-1.amazonaws.com
+2014-07-30 22:12:45,268 - root - ERROR - socket error while connecting to http://ec2-54-83-181-142.compute-1.amazonaws.com:8091/nodes/self error [Errno 60] Operation timed out 
+2014-07-30 22:13:12,349 - root - ERROR - socket error while connecting to http://ec2-54-83-181-142.compute-1.amazonaws.com:8091/nodes/self error [Errno 60] Operation timed out 
+2014-07-30 22:13:38,125 - root - ERROR - socket error while connecting to http://ec2-54-83-181-142.compute-1.amazonaws.com:8091/nodes/self error [Errno 60] Operation timed out 
+2014-07-30 22:14:04,729 - root - ERROR - socket error while connecting to http://ec2-54-83-181-142.compute-1.amazonaws.com:8091/nodes/self error [Errno 60] Operation timed out 
+2014-07-30 22:14:30,852 - root - ERROR - socket error while connecting to http://ec2-54-83-181-142.compute-1.amazonaws.com:8091/nodes/self error [Errno 60] Operation timed out 
+2014-07-30 22:14:30,853 - root - ERROR - error happened while initializing the cluster @ ec2-54-83-181-142.compute-1.amazonaws.com
+2014-07-30 22:14:30,853 - root - INFO - sleep for 5 seconds before trying again ...
+2014-07-30 22:15:01,068 - root - ERROR - socket error while connecting to http://ec2-54-83-181-142.compute-1.amazonaws.com:8091/nodes/self error [Errno 60] Operation timed out 
+2014-07-30 22:15:27,556 - root - ERROR - socket error while connecting to http://ec2-54-83-181-142.compute-1.amazonaws.com:8091/nodes/self error [Errno 60] Operation timed out 
+2014-07-30 22:15:53,350 - root - ERROR - socket error while connecting to http://ec2-54-83-181-142.compute-1.amazonaws.com:8091/nodes/self error [Errno 60] Operation timed out 
+2014-07-30 22:16:19,644 - root - ERROR - socket error while connecting to http://ec2-54-83-181-142.compute-1.amazonaws.com:8091/nodes/self error [Errno 60] Operation timed out 
+2014-07-30 22:16:46,160 - root - ERROR - socket error while connecting to http://ec2-54-83-181-142.compute-1.amazonaws.com:8091/nodes/self error [Errno 60] Operation timed out 
+2014-07-30 22:16:46,161 - root - ERROR - error happened while initializing the cluster @ ec2-54-83-181-142.compute-1.amazonaws.com
+2014-07-30 22:16:46,161 - root - INFO - sleep for 5 seconds before trying again ...
+2014-07-30 22:17:15,964 - root - ERROR - socket error while connecting to http://ec2-54-83-181-142.compute-1.amazonaws.com:8091/nodes/self error [Errno 60] Operation timed out 
+2014-07-30 22:17:41,720 - root - ERROR - socket error while connecting to http://ec2-54-83-181-142.compute-1.amazonaws.com:8091/nodes/self error [Errno 60] Operation timed out 
+2014-07-30 22:18:08,356 - root - ERROR - socket error while connecting to http://ec2-54-83-181-142.compute-1.amazonaws.com:8091/nodes/self error [Errno 60] Operation timed out 
+2014-07-30 22:18:34,048 - root - ERROR - socket error while connecting to http://ec2-54-83-181-142.compute-1.amazonaws.com:8091/nodes/self error [Errno 60] Operation timed out 
+2014-07-30 22:18:59,764 - root - ERROR - socket error while connecting to http://ec2-54-83-181-142.compute-1.amazonaws.com:8091/nodes/self error [Errno 60] Operation timed out 
+2014-07-30 22:18:59,765 - root - ERROR - error happened while initializing the cluster @ ec2-54-83-181-142.compute-1.amazonaws.com
+2014-07-30 22:18:59,765 - root - INFO - sleep for 5 seconds before trying again ...
