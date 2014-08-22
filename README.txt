@@ -124,7 +124,29 @@ cls = get_driver(Provider.RACKSPACE)
 
 driver = cls('my username', 'my api key')
 
+==================================================================================
+=====================================================================================
 
+Deployment
+
+1. Set up the Apache Web Server on the machine you want to deploy
+2. Update the httpd.conf with the directory of the project
+
+example
+<VirtualHost *:80>
+     ServerName cen-1627.hq.couchbase.com
+     WSGIScriptAlias / /home/ec2-user/CouchbaseCloud/CouchbaseCloud/CouchbaseCloud/wsgi.py
+     ErrorLog /home/ec2-user/CouchbaseCloud/CouchbaseCloud/logs/apache_error.log
+     CustomLog /home/ec2-user/CouchbaseCloud/CouchbaseCloud/logs/apache_access.log combined
+
+     <Directory /home/ec2-user/CouchbaseCloud/CouchbaseCloud/CouchbaseCloud >
+        <Files wsgi.py>
+          Order deny,allow
+          Allow from all
+        </Files>
+       Allow from all
+    </Directory>
+3. Modify the wsgi.py file to the path of the project
 
 
 
