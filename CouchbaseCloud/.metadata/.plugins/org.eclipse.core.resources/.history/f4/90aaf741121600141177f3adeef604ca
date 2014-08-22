@@ -1,0 +1,734 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html id=''>
+<head>
+        
+      
+
+
+
+  
+  
+
+
+
+
+      <div id="deployments">
+
+        
+        <div id="deploymentsSection" class="section">
+          <h2>MongoDB Deployments</h2>
+          
+            <div class="h2ActionBtns">
+            	<a class="button icon create" href="/create">Create new</a>
+            </div>
+              <div class="noData"></div>
+       </div>
+
+
+        
+        
+          <div id="remoteConnectionsSection" class="section">
+            <h2>Remote Connections</h2>
+            
+            <div class="h2ActionBtns">
+              
+                
+                  <a class="button icon add" onclick="openCreateConnectionDialog(event);" target="_blank">Add</a>
+                
+                
+              
+            </div>
+            
+              
+                <div class="noData"></div>
+              
+              
+            
+            
+            
+
+<form action="/saveconnection" method="POST"
+      id="saveConnectionDialog" title="Configure a remote connection" autocomplete="off" style="display:none;">
+
+  
+    
+    
+  
+
+
+
+
+
+  <fieldset>
+    <input type="hidden" name="r" value="/home"/>
+    <input id="connectionId" type="hidden" name="id" value=""/>
+    <div>
+      <p>
+        Remote Connections allow you to visualize and manage the data and database(s) on MongoDB servers running anywhere.
+      </p>
+      <p>
+        From here you can configure a connection to (1) a remote database, (2) a remote mongod server process, or (3) a remote replica set.
+      </p>
+    </div>
+    <div>
+      <label>Name for this remote connection<span class="required"></span></label>
+      <input class="required connectionName" type="text" name="connectionName" id="connectionName" value=""/>
+    </div>
+    <div>
+      <label>URI<span class="required"></span> <span class="tip"><a id="uriHelpLink" href="javascript:showInlineHelp('uriHelp')">explain this</a></span></label>
+      <input class="required" type="text" name="uri" id="uri" value=""/>
+    </div>
+    <div>
+      <input id="storeCredentials" type="checkbox" name="storeCredentials" />
+      <label>Save password? <span class="tip"><a id="isThisSecureLink" href="javascript:showInlineHelp('rememberPasswordHelp')">explain this</a></span></label>
+    </div>
+    <div class="metadataAgreement">
+      <input class="required" type="checkbox" name="enableMetaData" id="enableMetaData"/>
+      <label>
+        I allow MongoLab to save configuration data in my remote database(s).<span class="required"></span>
+        <span class="tip"><a id="enableMetaDataHelpLink" href="javascript:showInlineHelp('enableMetaDataHelp')">explain this</a></span>
+      </label>
+    </div>
+    <div class="inlineHelp" id="enableMetaDataHelp" style="display: none;">
+      <p>
+        Certain MongoLab features and services will store configuration information into the database itself.
+        For example, MongoLab allows you to save search queries for repeated use; when you create a Saved Search, the configuration for that query is stored in your database.
+      </p>
+      <p>
+        This configuration data takes up a tiny amount of space and should not meaningfully affect the storage footprint of your database.  Furthermore we have isolated this data into special collections prefixed with <code>objectlabs-system</code> so there should be no impact on your data.  You can delete this information at any time by removing the <code>objectlabs-system</code> collections.
+      </p>
+      <p>
+        By checking this checkbox, you acknowledge that you understand and allow us to save configuration data into your remote database(s).
+      </p>
+
+    </div>
+    <div class="inlineHelp" id="connectionNameHelp" style="display:none;">
+      <p>The <code>Connection name</code> uniquely identifies your remote connection in your MongoLab account.  It is used primarily for display purposes.</p>
+    </div>
+    <div class="inlineHelp" id="uriHelp" style="display: none;">
+      <p>
+        Enter a <code>URI</code> in the standard MongoDB connection string format (<a href="http://www.mongodb.org/display/DOCS/Connections">MongoDB reference</a>):
+      <pre>  mongodb://[dbuser:dbpass@]host:port[/dbname]</pre>
+      </p>
+      <div class="tinyLineBreak"></div>
+      <p>
+        The <code>username</code>, <code>password</code> are optional - if the server you are connecting to requires authentication, you will be prompted for your credentials later even if you do not provide them now.  The <code>dbname</code> must be "admin" if you want to authenticate to an entire <code>mongod</code> server process.
+      </p>
+      <div class="tinyLineBreak"></div>
+      <p>Example - connecting to a single database:
+      <pre>  mongodb://[dbuser:dbpass@]example.com:12345[/dbname]</pre>
+      </p>
+      <p>Example - connecting to a server:
+      <pre>  mongodb://[admindbuser:admindbpass@]example.com:12345[/admin]</pre>
+      </p>
+      <p>Example - connecting to a replica set cluster:
+      <pre>  mongodb://[admindbuser:admindbpass@]example.com:12345,example2.com:12345[/admin]</pre>
+      </p>
+    </div>
+    <div class="inlineHelp" id="rememberPasswordHelp" style="display:none;">
+      <p>
+        For security reasons, we do not store your database username and password in our system unless you check the <code>Save password?</code> checkbox.
+      </p>
+      <p>
+        If you choose to save your database credentials in our system, you can be assured that your password will be encrypted and stored securely.  That being said, if your database contains sensitive information, we recommend that you do not save your password in our system.
+      </p>
+    </div>
+  </fieldset>
+</form>
+
+<script type="application/javascript">
+  function openCreateConnectionDialog(event) {
+    closeInlineHelp();
+    // initialize fields
+    $("#saveConnectionDialog").validate().resetForm();
+    $("#connectionId").val("");
+    $("#uri").val("");
+    $("#connectionName").val("");
+    $(".metadataAgreement").show();
+    $("#enableMetaData").attr("checked", false);
+    $("#storeCredentials").attr("checked", false);
+    openDialog('#saveConnectionDialog', event);
+  }
+
+  function openEditConnectionDialog(id, name, uri, store, event) {
+    closeInlineHelp();
+    $("#saveConnectionDialog").validate().resetForm();
+    // set fields
+    $("#connectionId").val(id);
+    $("#uri").val(uri);
+    $("#connectionName").val(name);
+    $(".metadataAgreement").hide();
+    $("#enableMetaData").attr("checked", true);
+    $("#storeCredentials").attr("checked", store);
+    openDialog('#saveConnectionDialog', event);
+  }
+
+  $(document).ready(function() {
+    $("#uri").focus( function() { showInlineHelp('uriHelp'); } );
+    $("#uriHelpLink").focus( function() { showInlineHelp('uriHelp'); } );
+    $("#storeCredentials").focus( function() { showInlineHelp('rememberPasswordHelp'); } );
+    $("#isThisSecureLink").focus( function() { showInlineHelp('rememberPasswordHelp'); } );
+    $("#enableMetaDataHelpLink").focus( function() { showInlineHelp('enableMetaDataHelp'); } );
+    $("#enableMetaData").focus( function() { showInlineHelp('enableMetaDataHelp'); } );
+    $("#saveConnectionDialog").validate( {
+      errorPlacement: function(error, element) {
+        if(element.attr("type") == 'checkbox') {
+          element.next('label').after(error);
+        } else {
+          element.after(error);
+        }
+      }
+    } );
+
+    $.validator.addMethod("connectionName", function (value, element) {
+      var result = this.optional(element) || ( value.length < 64 && /^([A-Za-z0-9_-])*$/.test(value) );
+      return result;
+    }, "The connection name must have fewer than 64 characters and cannot have any spaces or special characters (hyphens and underscores are OK) in it.");
+
+
+    initDialog("#saveConnectionDialog", "Save");
+    $("#saveConnectionDialog").dialog("option", "width", 650);
+
+    // open dialogs on errors
+    if(PAGE_ERRORS['/saveconnection']) {
+      openDialog('#saveConnectionDialog', null);
+    }
+  });
+</script>
+
+          </div>
+        
+        
+        
+
+      </div>
+
+
+
+      
+
+      
+      
+      <form action="/delete" method="POST" id="DbConstructionErrorDeleteForm" title="Error" style="display:none;">
+        <div><!-- message goes here --></div>
+        <input type="hidden" name="db" value=""/>
+      </form>
+      
+      
+      <form action="/deletecluster" method="POST" id="ClusterConstructionErrorDeleteForm" title="Error" style="display:none;">
+        <div><!-- message goes here --></div>
+        <input type="hidden" name="cluster" value=""/>
+      </form>
+      <script>
+        $(document).ready(function() {
+          initMsgDialog("#DbConstructionErrorDeleteForm", 458);
+          initMsgDialog("#ClusterConstructionErrorDeleteForm", 458);
+        });
+      </script>
+
+    </div> <!-- END #mainCol -->
+
+    
+
+<div class="helpTray">
+  <a class="openHelp" onclick="HelpTray.openHelpTray();"><div class="openHelpButton"></div></a>
+  <a class="closeHelp" onclick="HelpTray.closeHelpTray();"><div class="closeHelpButton"></div></a>
+  <div class="defaultHelp">
+    <h1></h1>
+    
+  </div>
+</div>
+
+<script type="application/javascript">
+  var HelpTray = {
+
+    getHelpDiv: function(topic) {
+      if(topic) {
+        var $help = $("div.helpTray>div[helpTopic="+topic+"]");
+        if($help.length) {
+          return $help;
+        } else {
+          return null;
+        }
+      } else {
+        return $("div.helpTray>div.defaultHelp");
+      }
+    },
+
+    openHelpTray: function(topic) {
+      var $help = HelpTray.getHelpDiv(topic);
+      if((topic && $help) || (!topic && !$("div.helpTray").hasClass("reveal"))) {
+        // hide all help divs
+        $("div.helpTray>div").hide();
+        // show the specified one
+        $help.show();
+        // reveal the tray
+        $("div.helpTray").addClass("reveal");
+      }
+    },
+
+    closeHelpTray: function() {
+      $("div.helpTray").removeClass("reveal");
+    },
+
+    addHelpTopic: function(topicId, title, paragraphs) {
+      var $helpTray = $("div.helpTray");
+      $helpTray.append('<div helpTopic="'+topicId+'"/>');
+      HelpTray.appendHelpContent(topicId, title, paragraphs);
+    },
+
+    appendHelpContent: function(topicId, title, paragraphs) {
+      var $help = HelpTray.getHelpDiv(topicId);
+      if($help.length) {
+        if(title) {
+          $help.append('<h1>'+title+'</h1>');
+        }
+        if(paragraphs) {
+          for(var i in paragraphs) {
+            $help.append('<p>'+paragraphs[i]+'</p>');
+          }
+        }
+      }
+    },
+
+    bindHelpTopic: function(topicId, query) {
+      var $elem = query;
+      if(typeof $elem == "string") {
+        $elem = $(query);
+      }
+      if($elem.length) {
+        $elem.addClass("helpBound link");
+        $elem.click(function(event) {
+          event.stopPropagation();
+          HelpTray.openHelpTray(topicId);
+        });
+      }
+    },
+
+    setDefaultHelpTitle: function(title) {
+      HelpTray.getHelpDiv().find("h1").html(title);
+    },
+
+    setDefaultHelpText: function(paragraphs) {
+      // remove existing text
+      var $help = HelpTray.getHelpDiv();
+      $help.find("p").remove();
+      // add new text
+      for(var i in paragraphs) {
+        $help.append('<p>'+paragraphs[i]+'</p>');
+      }
+    }
+  };
+
+  $(document).ready(function() {
+    // move help tray to the top level of the DOM
+    $("div.helpTray").appendTo($('body'));
+
+    // close help tray when clicking away
+    $('html').click(function() {
+      HelpTray.closeHelpTray();
+    });
+    // don't close help tray when clicking on help tray
+    $("div.helpTray").click(function(event) {
+      event.stopPropagation();
+    });
+  });
+</script>
+
+    <script type="application/javascript">
+      $(document).ready(function() {
+        // populate help tray
+        HelpTray.setDefaultHelpTitle("Account Home");
+        var helpText = ["This is home base for your MongoLab account.  From this page, you can access each of your MongoDB deployments to view connection info, browse data, manage backups, etc.", "To connect to your database(s), use the connection info that is supplied on each database's home page.",
+        "For additional help, please contact us at <a href='mailto:support@mongolab.com'>support@mongolab.com</a>."];
+        
+        HelpTray.setDefaultHelpText(helpText);
+
+        HelpTray.addHelpTopic("fileSize", "File Size",
+            [
+              "The file size is the total size of the storage files used for this deployment.  This represents the overall storage footprint for the database(s) on disk.",
+              "For servers running with the <code>smallfiles</code> option (we use this option on our Shared plans), the first file allocated is 16MB, the second 32MB, the third 64MB ... until 512MB is reached at which point each subsequent file is 512MB.",
+              "To see more stats for a given database, please visit the \"Stats\" tab for that database.  Values are converted using powers of 1024 (versus 1000)."
+            ]);
+        HelpTray.bindHelpTopic("fileSize", $("#deploymentsTable th.fileSizeCol"));
+
+        HelpTray.addHelpTopic("storageSize", "Size (data plus indexes)",
+            [
+              "The \"Size\" column represents the total size of all documents in this deployment, including the padding factor.  It also includes the total size of all the indexes.",
+              "To see more stats for a given database, please visit the \"Stats\" tab for that database.  Values are converted using powers of 1024 (versus 1000)."
+            ]);
+        HelpTray.bindHelpTopic("storageSize", $("#deploymentsTable th.sizeCol"));
+      });
+    </script>
+
+    <div class="clearer"></div>
+  </div> <!-- END #colWrapper -->
+
+
+  
+  <!-- NOTE: the _setCustomVar for Google Analytics custom variables *must* go before the _trackPageview in the footer -->
+  <!-- Google Analytics: Custom Variable -->
+<!-- https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingCustomVariables -->
+<script type="text/javascript">
+
+  var domain = window.location.hostname
+  if (domain.indexOf("mongolab.com") !== -1) {
+
+  if (_gaq == undefined) {
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-307557-3']);
+  }
+
+  _gaq.push(['_setCustomVar',
+    1,                // This custom var is set to slot #1.  Required parameter.
+    'account_status', // The name of the custom variable.  Required parameter.
+    'HAS_ACCOUNT',    // Sets the value of the custom variable.
+    1                 // Sets the scope to visitor-level.
+  ]);
+
+  }
+  else {
+    console.debug("Did not push HAS_ACCOUNT to GA b/c domain doesn't contain mongolab.com...")
+  }
+
+</script>
+
+<!-- Google: "Site Visitor" -->
+<!-- Place the code for #2 (User) on pages that only signed in users see.  If there is a key page that all signed in users are likely to visit, you can put the code on that page only. -->
+<script type="text/javascript">
+  /* <![CDATA[ */
+var google_conversion_id = 971843581;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "4ScRCKPijQQQ_c-0zwM";
+var google_conversion_value = 0;
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+  <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="https://www.googleadservices.com/pagead/conversion/971843581/?value=0&amp;label=4ScRCKPijQQQ_c-0zwM&amp;guid=ON&amp;script=0"/>
+  </div>
+</noscript>
+
+  
+  
+
+</div> <!-- END #body -->
+<div id="footerWrapper" style="display: none">
+  
+
+
+
+    
+      <div id="preFooterBar">
+  <div class="wrap">
+    <div class="logo">
+      <a href="/"><img src="/base/img/mongolab-logo-146x38.png" height="38" width="146" alt="MongoLab" /></a>
+    </div>
+    <div class="links marketingContent" style="display:block;">
+      <span class="message">Get 500 MB <strong>FREE</strong></span>
+      <a onclick="gotoSignupWithSourceParam();" class="signup">Sign up</a>
+    </div>
+    <div class="clearer"></div>
+  </div>
+</div>
+
+      <div id="footer">
+  <div class="wrap">
+    <div class="siteLinks">
+      <ul>
+        <li>
+          <strong>Company</strong>
+          <ul>
+            <li class="marketingLinks"><a href="/company">About MongoLab</a></li>
+            <li><a href="http://blog.mongolab.com" target="_blank">Blog</a></li>
+            <li><a href="http://mongolab.org" target="_blank">Open-source Projects</a></li>
+          </ul>
+        </li>
+        <li class="marketingLinks">
+          <strong>Plans</strong>
+          <ul>
+            <li><a href="/plans">Features</a></li>
+            <li><a href="/plans/pricing">Pricing</a></li>
+          </ul>
+        </li>
+        <li style="margin-left:-38px;">
+          <strong>Support</strong>
+          <ul>
+            <li><a href="http://status.mongolab.com">MongoLab Status</a></li>
+            <li><a href="http://docs.mongolab.com">Documentation</a></li>
+            <li><a href="https://support.mongolab.com/anonymous_requests/new">Ask a Question</a></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Clouds</strong>
+          <ul>
+            <li><a href="/aws">Amazon (AWS)</a></li>
+            <li><a href="/lp/mongodb-on-azure">Azure</a></li>
+            <li><a href="/google">Google</a></li>
+            <li><a href="https://www.joyent.com/products/compute-service">Joyent</a></li>
+            <li><a href="http://www.rackspace.com/cloud/">Rackspace</a></li>
+          </ul>
+        </li>
+        <li class="share">
+          <strong>Community</strong>
+          <ul>
+            <li>
+              <a style="margin-right:3px;" href="https://twitter.com/mongolab"><img src="/base/img/icon_twitter.png" width="26" height="26" /></a>
+              <a style="margin-right:3px;" href="https://www.facebook.com/MongoLab"><img src="/base/img/icon_facebook.png" width="26" height="26" /></a>
+              <a href="https://plus.google.com/+MongoLab"><img src="/base/img/icon_googleplus.png" width="24" height="24" style="margin-left:2px; margin-bottom:2px;"/></a>
+            </li>
+          </ul>
+        </li>
+<li><font size=1><a href="https://safeharbor.export.gov/list.aspx" target=â_blankâ>We self-certify </br>compliance with:</font></a>
+          <a href="http://export.gov/safeharbor/" target="_blank"><img src="/base/img/safe-harbor.png" alt="U.S.-EU & U.S.-Swiss Safe Harbor" /></a>
+        </li>
+      </ul>
+    </div>
+    <div class="clearer"></div>
+    <div class="powered">
+      <a href="http://mongodb.org" target="_blank"><img src="/base/img/powered-by-mongoDB.png" alt="powered by MongoDB" /></a>
+    </div>
+    <div class="copyright">
+      &copy; 2014 <a style="margin-left:0px;"href="http://objectlabs.com">ObjectLabs Corporation</a> <a href="/company/legal/tos">Terms of Service</a><a href="/company/legal/privacy">Privacy Policy</a>
+    </div>
+    <div class="clearer"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+<!-- begin SnapEngage code -->
+  // SnapEngage widget
+  // (please note additional changes to this widget in portal's footer.jsp file)
+  (function() {
+    var se = document.createElement('script'); se.type = 'text/javascript'; se.async = true;
+    se.src = '//commondatastorage.googleapis.com/code.snapengage.com/js/43487a64-584c-49c5-a8c9-1766b6316043.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(se, s);
+  })();
+<!-- end SnapEngage code -->
+
+  var domain = window.location.hostname
+  if (domain.indexOf("mongolab.com") !== -1) {
+
+  // Google Analytics tracker for mongolab.com
+  if (_gaq == undefined) {
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-307557-3']);
+    _gaq.push(['_trackPageview']);
+  }
+  else {
+    _gaq.push(['_trackPageview']);
+  }
+  }
+  else {
+    console.debug("Did not push trackPageview to GA b/c domain doesn't contain mongolab.com...")
+  }
+
+  (function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+      <!-- set user email in SnapEngage widget -->
+      
+        <script type="text/javascript">
+          // SnapEngage widget
+          // (please this is also in footer.html)
+          (function() {
+            var se = document.createElement('script'); se.type = 'text/javascript'; se.async = true;
+            se.src = '//commondatastorage.googleapis.com/code.snapengage.com/js/43487a64-584c-49c5-a8c9-1766b6316043.js';
+            var done = false;
+            se.onload = se.onreadystatechange = function() {
+              if (!done&&(!this.readyState||this.readyState==='loaded'||this.readyState==='complete')) {
+                done = true;
+                SnapABug.setUserEmail('pasrivas@syr.edu', true);
+              }
+            };
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(se, s);
+          })();
+        </script>
+      
+    
+    
+
+
+<!-- if logged in hide signup-related links-->
+
+    <script type="text/javascript">hideSignupRelatedLinks();</script>
+
+
+<!-- hide products/pricing pages if it's not ok to see them -->
+
+
+
+
+
+
+</div>
+</body>
+
+
+
+<script type="text/javascript">
+
+  function getSubscriptionUrl(type, id) {
+    var $row = getSubscriptionRow(id);
+    if($row.hasClass("subscriptionStatus-error")) {
+      return null;
+    }
+    var url = "/"+$row.attr("linkId");
+    if(type == "db" || type == "database") {
+      url = "/databases"+url;
+    } else if(type == "cluster") {
+      url = "/clusters"+url;
+    } else if(type == "server") {
+      url = "/servers"+url;
+    } else if(type == "remote") {
+      url = "/connections"+url;
+    } else {
+      return null;
+    }
+    return url;
+  }
+
+  function linkifyCell($cell, link) {
+    $cell.html('<a href="'+link+'">'+$cell.html()+'</a>')
+  }
+
+  function toggleStatusDetail(subId) {
+    var $row = getSubscriptionRow(subId);
+    // only operate if the expander button is visible
+    if($row.length && $row.find(".expanderCol .expanderIcon:visible").length) {
+      if($row.hasClass("showDetail")) {
+        $row.removeClass("showDetail");
+      } else {
+        $row.addClass("showDetail");
+      }
+      syncAllStatusToggler();
+    }
+  }
+
+  function syncAllStatusToggler() {
+    var $toggler = $("tr.headers .expanderIcon");
+    var $table = $("#deploymentsTable");
+    var numStatus = $table.find("tr.subscriptionRow .expanderIcon:visible").length;
+    if(numStatus) {
+      var numOpen = $table.find("tr.subscriptionRow.showDetail .statusDetail").length;
+      if(numStatus > numOpen) {
+        $toggler.css("visibility", "visible");
+      } else {
+        $toggler.css("visibility", "hidden");
+      }
+    } else {
+      $toggler.css("visibility", "hidden");
+    }
+  }
+
+  function showAllStatus() {
+    if($("#deploymentsTable .expanderIcon:visible").length) {
+      $("#deploymentsTable tr.subscriptionRow").each(function() {
+        showStatusDetail($(this).attr("subscriptionId"));
+      });
+    }
+  }
+
+  function hideAllStatus() {
+    if($("#deploymentsTable .expanderIcon:visible").length) {
+      $("#deploymentsTable tr.subscriptionRow").each(function () {
+        hideStatusDetail($(this).attr("subscriptionId"));
+      });
+    }
+  }
+
+  function showStatusDetail(subId) {
+    var $row = getSubscriptionRow(subId);
+    // only operate if the expander button is visible
+    if($row.length && $row.find(".expanderCol .expanderIcon:visible").length) {
+      if(!$row.hasClass("showDetail")) {
+        $row.addClass("showDetail");
+        syncAllStatusToggler();
+      }
+    }
+  }
+
+  function hideStatusDetail(subId) {
+    var $row = getSubscriptionRow(subId);
+    // only operate if the expander button is visible
+    if($row.length && $row.find(".expanderCol .expanderIcon:visible").length) {
+      if($row.hasClass("showDetail")) {
+        $row.removeClass("showDetail");
+        syncAllStatusToggler();
+      }
+    }
+  }
+
+  // asynchronously fetch all statuses
+  function loadAllSubscriptionStatuses() {
+    $("#deploymentsTable tr.subscriptionStatus-loading").each(function() {
+      loadSubscriptionRowStatus($(this));
+    });
+  }
+
+  function loadSubscriptionRowStatus($row) {
+    var id = $row.attr("subscriptionId");
+    var type = $row.attr("subscriptionType");
+    if(type === "cluster") {
+      HomeLanding.loadCluster(id, "HyDTfe2yMeS_dKYK8zSCc4p7qjwdXHUg");
+    } else if (type == "db") {
+      HomeLanding.loadDatabaseSubscription(id, "HyDTfe2yMeS_dKYK8zSCc4p7qjwdXHUg");
+    }
+  }
+
+  function revealContent() {
+    $("#colWrapper").show();
+    $("#footerWrapper").show();
+  }
+
+  $(document).ready(function() {
+    var $table = $("#deploymentsTable");
+
+    // linkify the clickable cells
+    $table.find("tr.subscriptionRow").each(function() {
+      var link = getSubscriptionUrl($(this).attr("subscriptionType"), $(this).attr("subscriptionId"));
+      $(this).find(".linkCol").each(function() {
+        linkifyCell($(this), link);
+      });
+    });
+
+    //linkify remote connection rows
+    $("#remoteConnectionsTable").find("tr.subscriptionRow").each(function() {
+      var link = "/connections/"+$(this).find(".idCol").html();
+      $(this).find(".linkCol").each(function() {
+        linkifyCell($(this), link);
+      });
+    });
+
+    revealContent();
+
+    syncAllStatusToggler();
+    loadAllSubscriptionStatuses();
+
+    // set up tooltips
+    $table.find("td").mousemove(function(event) {
+      var $tooltip = $(this).find(".tooltip");
+      if($tooltip.length) {
+        $tooltip.css("left", (event.clientX+20)+"px");
+        $tooltip.css("top", (event.clientY-10)+"px");
+      }
+    });
+
+    // listen for status changes
+    $table.find("tr").on("updateStatus", function(event) {
+      syncAllStatusToggler();
+    });
+  });
+</script>

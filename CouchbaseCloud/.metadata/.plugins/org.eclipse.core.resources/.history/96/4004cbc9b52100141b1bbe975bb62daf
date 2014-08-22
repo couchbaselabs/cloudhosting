@@ -1,0 +1,45 @@
+
+
+
+import os
+
+import os.path
+import subprocess
+
+from couchbase import Couchbase
+
+PATH = '/tmp/test.ini'
+
+cb = Couchbase.connect (bucket = "default", host = "localhost")
+
+while True:
+    
+    try:
+        result = cb.get("DeploymentRequest").value
+    except:
+        continue
+    if result['status'] == "DE":
+        
+        
+        
+        substr = "Can't establish SSH session"
+        op = "Can't establish SSH session"
+        print op.find(substr)
+        while  op.find(substr) != -1 :
+             p2 = subprocess.Popen(r'sudo -s python scripts/install.py -i /tmp/test_processing.ini -p product=cb,version=3.0.0-966-rel,amazon=true',
+                          cwd = r'/auth/testrunner', shell =True)
+
+             output, error = process.communicate()
+             op = "{0}".format(output)
+             print op
+             p2.wait()
+             
+        result['status'] = 'IN'
+        cb.set("DeploymentRequest",result)
+        
+        
+        
+        cmd = "python testrunner.py  -i /tmp/test_processed.ini -t rebalance.rebalancein.RebalanceInTests.rebalance_in_after_ops -p nodes_in=1,nodes_init=3,replicas=1,items=100000"
+        p4 = subprocess.Popen(r'python testrunner.py  -i /tmp/test_processed.ini -t rebalance.rebalancein.RebalanceInTests.rebalance_in_after_ops -p nodes_in=1,nodes_init=3,replicas=1,items=100000',
+                              cwd = r'/auth/testrunner', shell =True)
+        p4.wait()

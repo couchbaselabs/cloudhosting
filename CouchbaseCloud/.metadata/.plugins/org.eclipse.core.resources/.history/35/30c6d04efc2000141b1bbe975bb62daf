@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<script>
+var xmlhttp;
+function loadXMLDoc(url,cfunc)
+{
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	xmlhttp.onreadystatechange=cfunc;
+	xmlhttp.open("POST",url,true);
+	xmlhttp.send();
+}
+
+
+
+function myFunction()
+{
+loadXMLDoc("/poll_ins_state/",function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+       stre = xmlhttp.responseText;
+    
+       stre = JSON.parse(stre)
+       
+       document.getElementById("demo").innerHTML = stre
+       if (stre == "RD")
+       {
+    	   {% load staticfiles %}
+           document.getElementById("ins").src="{% static "ajax-loader.gif" %}" 
+           
+           document.getElementById("Done").style.visibility="hidden";
+           
+           var time = 3000
+           
+           setTimeout(
+        		   function()
+        		   {
+        			   document.getElementById("demo").innerHTML = "1"
+        		   }, 3000)
+           
+           myFunction();
+       }
+       else if (stre == "CO")
+       {
+    	   {% load staticfiles %}
+           document.getElementById("ins").src="{% static "ajax-loader.gif" %}" 
+           
+           document.getElementById("Done").style.visibility="visible";
+           
+       }
+    }
+  });
+}
+
+
+</script>
+</head>
+<body onload = "myFunction()" >
+
+
+  <br/>
+  
+  {% load staticfiles %}
+  <div align="center" visibility:hidden>
+        <br/>
+  		Creating Instances <img id = "ins" src = "{% static "ajax-loader.gif" %}"  >	</img>
+  </div>
+  
+  
+  <br/><br/><br/><br/>
+  <div align="center">
+  		<form id="viewform" method="POST" action = "/mngcluster/" >
+         	<input id = "Done" type = "submit" value = "Continue">
+  		</form>
+  </div>
+  <p id = "demo"> </p>
+</body>
+
+
+</html>

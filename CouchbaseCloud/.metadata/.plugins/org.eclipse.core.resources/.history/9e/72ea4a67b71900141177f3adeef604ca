@@ -1,0 +1,15 @@
+[global]
+username:Administrator
+password:Membase123cb
+port:8091
+data_path:d:/data
+
+[servers]
+1:10.226.251.62
+2:10.12.223.48
+3:10.12.243.26
+4:10.102.3.236
+
+[membase]
+rest_username:Administrator
+rest_password:password

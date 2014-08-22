@@ -1,0 +1,219 @@
+
+# Create your views here.
+
+from django.shortcuts import render_to_response
+from django.contrib.auth import authenticate, login
+
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+
+from libcloud.compute.types import Provider
+from libcloud.compute.providers import get_driver
+
+import json
+
+from couchbase import Couchbase
+from couchbase import *
+
+import subprocess
+import os
+from django.conf import settings
+
+import ConfigParser
+
+
+
+@csrf_exempt  
+def auth_user(request):
+    state = "Please log in below..."
+    return render_to_response('auth.html',{'state':state})
+
+@csrf_exempt
+def login_user(request):
+    state = "Please log in below..."
+    
+    cb=Couchbase.connect(bucket='default', host='localhost')
+    
+    username = password = ''
+    if request.POST:
+        '''
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                state = "You're successfully logged in!"
+            else:
+                state = "Your account is not active, please contact the site admin."
+        else:
+            state = "Your username and/or password were incorrect."
+            return render_to_response("message.html",{'state':state, 'username': username})
+            '''
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        result = cb.get("user::piushs").value
+        
+        
+        
+        if (result['password1'] == password) :
+                request.session['username'] = username
+                return render_to_response("deployments.html",{'result':result})
+        else :
+                return render_to_response("auth.html",{'error':"IU", 'message':"Your username or password is invalid"})            
+ 
+@csrf_exempt
+def register_user(request):
+    return render_to_response('registration.html')
+
+@csrf_exempt
+def create_account(request):
+    
+    cb=Couchbase.connect(bucket='default', host='localhost')
+    
+    uname = request.POST.get('username')
+    password = request.POST.get('password')
+    accountname = request.POST.get('accountName')
+    email = request.POST.get('email')
+    
+    
+    value = {'username' : uname, 
+             'password1':password,  
+             'accountName':accountname,
+             'email' :email,
+             'deploy':None}
+    
+    print value['username']
+    
+    cb.set("user::{0}".format(uname),json.dumps(value))
+                                              
+    
+    result = cb.get("user::{0}".format(uname)).value
+    return render_to_response('deployments.html', {'result' :result})
+
+@csrf_exempt
+def couchdep(request) :
+    return render_to_response('couchdbdep.html')
+
+
+def aws_mkfile(nodesup):
+
+    cfgfile = open("/tmp/test.ini",'w')
+    
+    Config = ConfigParser.ConfigParser()
+    
+    Config.add_section('global')
+    Config.set('global','username','ec2-user')
+    Config.set('global','ssh_key', "/Users/piush/Key/piushs.pem")
+    Config.set('global','port', "8091")
+    
+    Config.add_section('servers')
+    
+    count = 1
+    for node in nodesup:
+        Config.set('servers', count,node.public_ips)
+    
+    Config.add_section('membase')
+    Config.set('membase','rest_username',"Administrator")
+    Config.set('membase','rest_password', "password")
+    
+    
+    Config.write(cfgfile)
+    cfgfile.close()
+    
+
+@csrf_exempt
+def deploy(request):
+    
+    
+    username = request.session['username']
+    cb=Couchbase.connect(bucket='default', host='localhost')
+    
+    
+    result = cb.get("user::{0}".format(username)).value
+    
+    
+    depname = request.POST.get('depname')
+    cpus = request.POST.get('cpus')
+    provider = request.POST.get('provider')
+    loc = request.POST.get('loc')
+    mc = request.POST.get('machine')
+    cbs = request.POST.get('machine')    
+    
+    print "hehhr" 
+    print result['username']
+
+    if result['deploy'] == None:
+        print "1"
+        result['deploy'] = [{'name':depname,'Provider':provider,'cpu': cpus,'cbi':cbs, 'loc':loc, 'mc':mc}]
+    else :
+        print "2"
+        result['deploy'].append({'name':depname,'Provider':provider,'cpu': cpus,'cbi':cbs, 'loc':loc, 'mc':mc})
+    
+    
+    print result       
+    cb.set("user::{0}".format(username), result)
+    
+    
+    location = request.POST.get("loc")
+    
+    if  location == 'East':
+        cls = get_driver(Provider.EC2_US_EAST)
+    
+    AWS_EC2_ACCESS_ID = "AKIAIM32BEWJ4F2K2VGQ"
+    AWS_EC2_SECRET_KEY = "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"
+    
+    driver = cls(AWS_EC2_ACCESS_ID, AWS_EC2_SECRET_KEY)
+    
+    ACCESS_KEY_NAME = 'piushs'
+    
+    
+    sizes = driver.list_sizes()
+    
+    for size in sizes:
+        print size
+    
+    MY_SIZE = 'm3.large'
+    MY_IMAGE = 'ami-76817c1e'
+    
+    
+    size = [s for s in sizes if s.id == MY_SIZE][0]
+    
+    image = driver.get_image(MY_IMAGE)
+    
+    print image
+    print size
+    
+    y = request.POST.get("cpus")
+    a=0
+    
+    n = int(y)
+    nodes = list()
+    while a < n :
+        node = driver.create_node(name="Test{0}".format(a), image=image, size=size, ex_keyname=ACCESS_KEY_NAME)
+        nodes.append(node)
+        a = a+1;
+    
+    nodesup = list()    
+    for node in nodes :
+        while node.state != 0 :
+            regionNodes = driver.list_nodes() 
+            node = [val for val in regionNodes if val.id == node.id][0]
+            continue
+        nodesup.append(node)
+    
+    
+    aws_mkfile(nodesup)
+    
+    path = os.getcwd() 
+    print path
+    os.chdir(path + "/auth/testrunner")
+    os.system('pwd')
+    
+    os.system('python scripts/install.py -i /tmp/test.ini -p product=cb,version=3.0.0-966-rel,amazon=true')
+    os.chdir(path)
+    
+    
+    return HttpResponse("Deployment Successful")

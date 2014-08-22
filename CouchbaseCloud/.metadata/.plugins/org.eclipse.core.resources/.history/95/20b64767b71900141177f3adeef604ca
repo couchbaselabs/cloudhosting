@@ -1,0 +1,15 @@
+
+[global]
+username:root
+password:couchbase
+port:8091
+
+[servers]
+1:10.3.4.181
+2:10.3.4.182
+3:10.3.4.183
+4:10.3.4.184
+
+[membase]
+rest_username:Administrator
+rest_password:password

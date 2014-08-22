@@ -1,0 +1,27 @@
+# pack-refs with: peeled fully-peeled 
+a0941c85ca0aa5a6f7334cbc4dbab1c7539416b0 refs/remotes/origin/1.7.alpha2
+baf8d75e96c9ce33fa855cb040f3a13c85eb5c76 refs/remotes/origin/branch-18
+d06cc8848b385c5f8abd0993c313cb692be75118 refs/remotes/origin/branch-taskmanager
+9dcbcc34863e725ed44b5afe95072ad514efd485 refs/remotes/origin/branchahol
+6c9c9b36be138cf8384f934562e93ee6e547ac5d refs/remotes/origin/dev
+c65c0ed6d8b79fb802d66d5da5f0c9f88c74b3ca refs/remotes/origin/master
+90d1a1bca5d8848e5a9551411f57436cb1744d1b refs/remotes/origin/stable
+78bdecb2a95633cdbce0af4500bf0fe141c994fb refs/remotes/origin/stable-perf
+40ffc10339cb910c886419f6af9c0faea763b386 refs/remotes/origin/taskmanager-dev-merge
+ba509b8083900d8e21faa5eb2d49902fdc91059c refs/tags/1.6.5-compatible
+efced3560d49cdac9e9ecf45e0f4c7d39358b4eb refs/tags/1.8.1
+^8ee41485e6f71b0fbf64832b57280d5ac4b7c120
+eea4acbe6454890c03085b3a18505506123d7f89 refs/tags/2.0.1-linux
+^7ceeab90e3529cd544e2fde06f82cb224276fc42
+3c74e70fcbe12361c5d3f9f6e71b228e2e348d50 refs/tags/2.0.1-macosx
+^3b5b4d961a1aae320b3d54eaa8e096417fe46906
+863d8456afe5413344dfa504b926395cd20e7dbb refs/tags/2.0.1-windows
+^3e7c88a6b5623d0788c7d7e97ea52607debece7f
+6c4b3fd9cdf22f5f283948c9e55c1c424d7916ac refs/tags/2.0.2r
+^7fec8d5aa58dc9d9803a365a8d08dafe5c1a5d5a
+b925fa49d4ced16af73261eae3cd8c7a010e678d refs/tags/2.1.0r
+^0c30a7ad3202049ed7b7d55d5811119d1f923ff0
+9d36144a0ccfcabe29054e7f987f7332396cd997 refs/tags/2.1.1r
+^00f4db2453f1cf9e6b6541065544e6fc685ea01d
+386ada7ca2a7e369d1e498a42241235d6aa3c1dd refs/tags/mcsoda-0.0.0-stable
+^0e6804ffbcaecd14cdded4ebed68c928bd71c9e0

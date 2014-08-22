@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+
+
+
+
+<html>
+<head>
+
+<div id="body" class="backgroundImage">
+    <div class="account ui-corner-all">
+
+        <div class="title ui-corner-all">
+            <span><h1 style="font-size: 100%; margin-bottom: 0;">Create a new account</h1></span>
+        </div>
+
+        <form class="content" action="/create-account" method="POST">
+
+           
+            <fieldset>
+                <div>
+                    Signing up for a MongoLab account will allow you to create and manage hosted MongoDB databases.
+                </div>
+                <br/>
+                <div class="tinyLineBreak"></div>
+
+                <div>
+                    <label>Account name<span class="helpIcon"></span></label>
+                    <br/>
+                    <input class="required" type="text" name="accountName" value="">
+                    <br/>
+                </div>
+                <div>
+                    <label>Username<span class="helpIcon"></span></label>
+                    <br/>
+                    <input class="required" type="text" name="username" value="">
+                    <br/>
+                </div>
+                <div>
+                    <label>Email</label>
+                    </br>
+                    <input class="required email" type="text" name="email" value="">
+                    </br>
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input class="required password" type="password" id="password1" name="password">
+                </div>
+                <div>
+                    <label>Confirm password</label>
+                    <input class="required" equalTo="#password1" type="password" id="password2" name="password2"/>
+                </div>
+                <div class="tinyLineBreak"></div>
+                <div>
+                    <label id="msaLabel">
+                        <input name="acceptMsaCheckbox" id="acceptMsaCheckbox" name="acceptMsaCheckbox" class="required" type="checkbox"
+                               onclick="alert('Please click on the &quot;Master Services Agreement&quot; link and review the agreement first.'); return false;"/>
+                        I accept MongoLab's <a id="readMsaNow" onclick='$("#acceptMsaCheckbox").removeAttr("onclick");' href="/company/legal/msa" target="_blank">Master Services Agreement</a><span class="helpIcon"></span>
+                    </label>
+                    <label for="acceptMsaCheckbox" generated="true" class="error" style="display: none;">This field is required.</label>
+                </div>
+                <input type="hidden" name="r" value=""/>
+                <input type="hidden" name="s" value=""/>
+            </fieldset>
+            <fieldset class="btns">
+                <button  class="blueButton" title="Create MongoLab account">Create account</button>
+            </fieldset>
+        </form>
+      
+    </div>
+</div>
+</body>
+
+
+</html>
+

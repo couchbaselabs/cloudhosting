@@ -1,0 +1,125 @@
+
+<header>
+	
+	    <div align = "center" class="container" >
+	        <h1  color = "#FC322B">
+	
+	            Couchbase Cloud Hosting
+	  
+	        </h1>
+	        
+	        <h2>
+	
+	            Couchbase Labs
+	
+	        </h2>
+	        <hr/>
+	        <hr/>
+	    </div>
+	
+	</header>
+<table id ="GCE">
+        <tbody>	
+               <tr>
+                   <td>
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   </td>
+                   <td>
+                		<h3>Enter the deployment name</h3>
+                   </td>
+                   <td>
+                	    <input name="depname" type = "text">
+                   </td>
+               	
+                   <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   </td>
+                   
+                   <td>
+		     			<h3>Subscription Id</h3>
+				   </td>
+		
+				   <td>
+		     			<input type="text" name = "subid" id="subid"/>
+				   </td>
+				    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   </td>
+	          </tr>
+              
+              <tr>  	
+                   <td>
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   </td> 
+                   <td>
+                		<h3>Number of servers</h3>
+                   </td>
+                   <td>
+                		<input name="cpus" type = "text">
+                   </td>
+               
+                   <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   </td>
+                   
+                   <td>
+                		<h3>Certificate</h3>
+                   </td>
+                   <td>
+                		<input name="certificate" type = "file">
+                   </td>
+              </tr>
+              
+              <tr>
+                  <td>
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  </td>
+                  <td>
+						<h3>Select a region</h3>
+				  </td>
+				
+					<td> 
+						<select name="loc">
+	   						<option>East US</option>
+	   						<option>West US</option>
+						</select>
+					</td>
+						
+	    		  	<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  	</td>
+                  	
+                    				    
+				</tr>
+        		
+        		<tr>
+        		 <td>
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  </td>
+        		<td>
+						<h3>Select a machine</h3>  
+					</td>
+					<td>
+						<select name="machine">
+	    						<option>Large</option>
+						</select>       
+					</td>
+        		</tr>
+	</tbody>
+</table>    

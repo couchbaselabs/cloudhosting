@@ -1,0 +1,73 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+
+
+<html>
+
+
+<div id="body" class="backgroundImage">
+
+    <div class="account ui-corner-all">
+
+        <div class="title ui-corner-all">
+            <span><h1 align="center"; style="font-size: 100%; margin-bottom: 0;">Manage Couchbase Deployment</h1></span>
+        </div>
+
+
+        <script type="text/javascript"  >
+				function OnSubmitForm()
+				{
+  					if(document.mngcluster.operation[0].checked == true)
+  					{
+    					document.mngcluster.action ="/Add/";
+  					}
+  					else
+  					if(document.mngcluster.operation[1].checked == true)
+  					{
+    					document.mngcluster.action ="/Dell/";
+  					}
+  					return true;
+				}
+		</script>
+        <form id="mngcluster" class="content"  onsubmit="return OnSubmitForm();" method="POST">
+
+
+            <input type="hidden" name="r" value=""/>
+
+            <fieldset >
+            
+                <h3> Bucket </h3>
+                <select id ="bucket">
+                   
+                   {% for buck in bucket %}
+                   
+                       <option name="{{ buck.name}}">{{ buck.name }}</option>
+                   {% endfor %}
+                
+                </select>
+                
+                <br/>
+                <br/>
+                <input type="radio" name="operation" value="1" checked>Add instance
+   				<input type="radio" name="operation" value="2">Delete Instance
+   				
+   				<br/>
+   				<br/>
+   				<h3> Specify the number of instances below</h3>
+   				<input type="text" name ="number" >
+   				<br/>
+   				<br/>
+   				<input type="submit" name="Submit" value ="Submit">
+            </fieldset>
+           
+           
+        </form>
+    </div>
+</div> <!-- END #body -->
+</body>
+</html>
+
+

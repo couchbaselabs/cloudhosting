@@ -1,0 +1,193 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+
+
+<html>
+
+<head>
+		<script>
+		
+				function getRam()
+				{
+					var mc = "{{ store }}"
+						$.ajax({
+						    url: '/getRamSize',
+						    data: {
+						        action: 'editclientprofile',
+						        image: clientPicture,
+						        name: clientName,
+						        email: clientEmail,
+						        address: clientAddress
+						    },
+						    cache: false,
+						    contentType: false,
+						    processData: false,
+						    type: 'POST',
+						    mimeType: "multipart/form-data",
+						    success: function(data) {
+						        console.log('success...');
+						    },
+						    error: function(jqXHR, textStatus, errorThrown) {
+						        console.log('error...');                    
+						    }
+						});
+			        document.getElementById('ramquota').value = "skfjghsjdhf"
+				    	
+				}
+		</script>
+
+</head>
+
+<body onload = "getRam()">
+<div  id="body" class="backgroundImage">
+
+    <div class="account ui-corner-all">
+
+        <div class="title ui-corner-all">
+            <span><h1 align="center"; style="font-size: 100%; margin-bottom: 0;">Manage Couchbase Deployment</h1></span>
+        </div>
+
+
+        
+        <form id="couchbaseconfig" class="content"   action = "/installation/" method="POST">
+
+
+            <input type="hidden" name="r" value=""/>
+
+            <fieldset >
+                <table>
+                    <tbody>
+                        <tr>
+                            
+                            <td>
+                        		<h3> Couchbase Configuration </h3>
+                        	</td>
+                        	
+                        	<td>
+                        	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        	</td>
+                        	<td>
+                        	    <h3> Replicas</h3>
+                        	</td>
+                        	<td>
+                        	    <select id="numrep" name ="numrep">
+                        	    	<option>1</option>
+                        	    	<option>2</option>
+                        	    	<option>3</option>
+                        	    </select>
+                        	</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <input type="radio" name="operation" id = "1" value="1" checked>Couchbase Server 3.0
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+   								<input type="radio" name="operation" id = "2" value="2">Couchbase Server 3.0 + DR XDCR
+   							</td>
+                        </tr>
+                        <tr>
+                            <td>
+                            	<input type="radio" name= "operation" id="3" value ="3">Couchbase Server 3.0 + Full text search
+                            </td>
+                        </tr>
+                        <tr>
+                        	<td>
+                            	<input type="radio" name= "operation" id="4" value ="3">Couchbase Server 3.0 + Sync Gateway 1.0
+                            </td>
+                        </tr>
+                    </tbody>
+                
+                </table>
+             </fieldset>
+             
+             <fieldset>
+                 <table>
+                 	<tbody>
+                 		<tr>
+                 			<td>
+                 			   <h3>System Configuration</h3>
+                 			</td>
+                 		</tr>
+                 		
+                 		<tr>
+                 		   <td>
+                 		       <h5>Cluster RAM Quota</h5>
+                 		   </td>
+                 		   <td>
+                 		       <input type="text" id="ramquota"/>
+                 		   </td>
+                 		   <td>
+                 		   	<p id= "availableRam" name="availableRAM"></p>
+                 		   </td>
+                 		   <td>
+		                 		   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                 		   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                 		   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                 		   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                 		   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 		   </td>
+                 		   
+                 		   <td>
+                 		           <h5>Read-only user password</h5>
+                 		   </td>
+                 		   <td>
+                 		   		<input type="password" name="rdpasswd">
+                 		   </td>
+                 		</tr>
+                 	</tbody>
+                 </table>
+             </fieldset>
+             
+             <fieldset>
+             
+             <table>
+             	<tbody>
+             
+                   <tr>
+                       <td>
+                       		<h3>Bucket Name</h3>
+                       </td>
+                       <td>
+                            <input type ="text" name= "bkname" value="default"/>
+                       </td>
+                       <td>
+                       &nbsp;&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                       &nbsp
+                       </td>
+                       <td>
+                            <h3>Bucket Size</h3>
+                       </td>
+                       <td>
+                            <input type="text" name="size">
+                       </td>
+                       
+                   </tr>
+                   
+                 </tbody>
+             </table>
+             </fieldset>
+             
+             <br/><br/><br/><br/>
+             <div align="center">
+                    <input type="submit" value="Deploy">
+             </div>
+        </form>
+    </div>
+</div> <!-- END #body -->
+</body>
+</html>
+
+

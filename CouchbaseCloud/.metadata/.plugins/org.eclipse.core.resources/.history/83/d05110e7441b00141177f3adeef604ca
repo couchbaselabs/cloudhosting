@@ -1,0 +1,89 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+
+
+<html>
+
+
+<div id="body" class="backgroundImage">
+
+    <div class="account ui-corner-all">
+
+        <div class="title ui-corner-all">
+            <span><h1 align="center"; style="font-size: 100%; margin-bottom: 0;">Log in</h1></span>
+        </div>
+ 
+        <form id="depform" class="content" action="/couchdep/" method="POST"> 
+
+            <script>
+               var dep = []
+            </script>
+            <input type="hidden" name="r" value=""/>
+
+            <fieldset >
+                <div id="deploymentsSection" class="section">
+                <h2>CouchDB Deployments</h2>
+          
+                <div class="h2ActionBtns" align = "center">
+            	    <a class="button icon create" href="/couchdep/">Create new</a>
+                </div>
+                <div class="noData"></div>
+              
+                <select id="deplist" onchange="test();">
+                 		
+                  		{% for res in result.deploy %}
+                     		<option value="{{ res.name }}">{{res.name}}</option>
+                     		
+                     		<script>
+                     	    	var map ={}
+                     	    	
+                     	    	map["{{ res.name }}"] = "{{ res.name }}"
+                     	    	map["{{ res.cpu }}"] = "{{ res.cpu }}"
+                     	    	map["{{ res.cbi }}"] = "{{ res.cbi }}"
+                     	    	map["{{ res.Provider }}"]
+                     	    </script>
+                     	    	
+                  		{% endfor %} 
+			    </select>
+                </div>
+            </fieldset>       
+       
+       		<script name = "text/javascript">
+          
+      			 function getSelectedText(elementId) {
+              			  var elt = document.getElementById(elementId);
+
+               			 if (elt.selectedIndex == -1)
+                    		return null;
+
+               			return elt.options[elt.selectedIndex].text;
+       			 } 
+       
+				 function test()
+				 {
+					{% for car in obj %}
+					     var temp = getSelectedText("deplist")
+			 		     temp = temp.trim()
+					     
+					     {% ifequal  "{{temp}}" car.tag|stringformat:"s" %}
+		           		 	document.getElementById('demo').innerHTML = "{{car.tag}}"
+		          		 {% endifequal %}
+					
+					{% endfor %}
+
+				 }
+				 
+		    </script> 
+
+			<p id = "demo"> </p>    
+		        
+        </form>
+    </div>
+</div> <!-- END #body -->
+</body>
+</html>
+
+

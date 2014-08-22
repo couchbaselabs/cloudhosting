@@ -1,0 +1,171 @@
+<table id ="AWS">
+        <tbody>	
+               <tr>
+                   <td>
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   </td>
+                   <td>
+                		<h3>Enter the deployment name</h3>
+                   </td>
+                   <td>
+                	    <input name="depname" type = "text">
+                   </td>
+               	
+                   <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   </td>
+                   
+                   <td>
+		     			<h3>AWS Access Key</h3>
+				   </td>
+		
+				   <td>
+		     			<input type="text id="ackey"/>
+				   </td>
+	          </tr>
+              
+              <tr>  	
+                   <td>
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   </td> 
+                   <td>
+                		<h3>Number of servers</h3>
+                   </td>
+                   <td>
+                		<input name="cpus" type = "text">
+                   </td>
+               
+                   <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   </td>
+                   
+                   <td>
+                		<h3>AWS Secret Key</h3>
+                   </td>
+                   <td>
+                		<input name="seckey" type = "seckey">
+                   </td>
+              </tr>
+              
+              <tr>
+                  <td>
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  </td>
+                  <td>
+						<h3>Select a region</h3>
+				  </td>
+				
+					<td> 
+						<select name="loc">
+	   						<option>East</option>
+	   						<option>West</option>
+	   						<option>SouthEast</option>
+						</select>
+					</td>
+						
+	    		  	<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  	</td>
+                  
+                  	<td>
+						<h3>Enter the keyname</h3>
+					</td>
+				
+				  	<td> 
+						<input type ="text" name="keyname" id="keyname"/>
+				  	</td>	
+			   </tr>
+		
+		        <tr>
+	    			<td>
+               			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        			</td>
+					<td>
+						<h3>Select a machine</h3>  
+					</td>
+					<td>
+						<select name="machine">
+	    						<option>m1.large</option>
+	    						<option>m3.large</option>
+	    						<option>m1.small</option>
+						</select>       
+					</td>
+			  
+		
+					<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    
+                	</td>
+                    
+                    <td>
+						<h3>Path of the key file</h3>  
+					</td>
+				</tr>
+					<td>
+						<select name="machine">
+	    						<option>m1.large</option>
+	    						<option>m3.large</option>
+	    						<option>m1.small</option>
+						</select>       
+					</td>
+			  
+                
+                <tr>
+                	
+					<td>
+							<h3>Image</h3>
+					</td>
+					<td>
+							<select name="cbserver">
+	    					  	<option>Linux</option>
+	    						<option>Windows</option>
+	    					</select>
+	    			</td>
+	    	
+					 <td>
+               			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        			</td>
+        		</tr>
+		</tr>
+	
+	<tr>
+	
+	    <td>
+               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        </td>
+		<td>
+		     <h3>AWS Secret Key</h3>
+		</td>
+		<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                	    
+        </td>
+		<td>
+		     <input type="text id="s"/>
+		</td>
+	</tr>
+  </tbody>
+</table>    
+		

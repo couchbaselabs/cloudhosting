@@ -1,0 +1,92 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+
+
+<html>
+
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+	
+	
+	     
+	     $(document).ready(function(){
+	    	  $("select").change(function(){
+	    	    
+	    		 if (document.getElementById("pr").value == "AWS") 
+	    	     {
+	    			 document.getElementById("view").style.visibility = "hidden" 
+	    	     	$("#view").load("../static/providerview.html")
+	    	  	 }
+	    	     else
+	    	    	 document.getElementById("view").style.visibility = "hidden"	
+	    	    
+	    	  });
+	    	});
+	
+	</script>
+
+</head>
+
+<div id="body" class="backgroundImage">
+
+    <div class="account ui-corner-all">
+
+        <div class="title ui-corner-all">
+            <span><h1 align="center"; style="font-size: 100%; margin-bottom: 0;">Deployment Form</h1></span>
+        </div>
+
+        <form id="couchdbform" class="content" action="/deploy/" method="POST"> 
+
+        <fieldset>
+            <table>
+                <tbody>
+                	<tr> 
+                	    <td >
+							<h3 >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							     Select a Cloud Provider</h3>
+						</td>
+						<td>
+							<select name="provider" id ="pr">
+							     <option>Select</option>
+					   			 <option>AWS </option>
+					   			 <option>Azure </option>
+							</select>
+						</td>
+					</tr>
+			    </tbody>
+			</table>	
+		</fieldset>
+		
+		<fieldset style="visibility: visible" id = "view">
+		
+	    </fieldset>   
+	    
+	    <br/>
+	    <br/>
+		     
+		<div align= "center">
+				<input type="submit" value ="Launch Instances">
+	    </div>    
+	   </form>
+	   
+	       
+    </div>
+</div> <!-- END #body -->
+</body>
+</html>
+
+

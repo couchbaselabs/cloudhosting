@@ -1,0 +1,15 @@
+couch.futon.alldocs.AllDocsTests.test_multipledocs
+couch.futon.basictests.BasicTests.test_baddocs
+couch.futon.basictests.BasicTests.test_create
+couch.futon.basictests.BasicTests.test_delete
+couch.futon.basictests.BasicTests.test_multiplecreate
+couch.futon.basictests.BasicTests.test_doccount
+couch.futon.basictests.BasicTests.test_docsave
+couch.futon.basictests.BasicTests.test_multipledocs
+couch.futon.basictests.BasicTests.test_maponekey
+couch.futon.basictests.BasicTests.test_get
+couch.futon.basictests.BasicTests.test_update
+couch.futon.basictests.BasicTests.test_mapqueryafterupdate
+couch.futon.basictests.BasicTests.test_reduceonekey
+couch.futon.basictests.BasicTests.test_docdelete
+couch.futon.basictests.BasicTests.test_mapqueryafterdelete

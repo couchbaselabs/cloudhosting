@@ -1,0 +1,53 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+
+
+<html>
+
+
+<div id="body" class="backgroundImage">
+
+    <div class="account ui-corner-all">
+
+        <div class="title ui-corner-all">
+            <span><h1 align="center"; style="font-size: 100%; margin-bottom: 0;">Log in</h1></span>
+        </div>
+
+        <form id="couchdbform" class="content" action="" method="POST"> 
+
+
+            <input type="hidden" name="r" value=""/>
+
+            <fieldset >
+					<h2>Select a Cloud Provider</h2>
+					<br/>
+					<select>
+					   <option>AWS </option>
+					</select>     
+					
+					<br/>
+					<h2>Select a region</h2> 
+					<select>
+					   <option>East</option>
+					   <option>West</option>
+					   <option>SouthEast</option>
+					</select>
+					
+					<br/>
+					<h2>Select a machine</h2>  
+					
+					<select>
+					    <option>
+					</select>        
+                
+            </fieldset>           
+        </form>
+    </div>
+</div> <!-- END #body -->
+</body>
+</html>
+
+
