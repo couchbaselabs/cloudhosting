@@ -58,7 +58,7 @@ Working
 1. All the HTML Templates are in the Template folder
 2. The handling of client requests are there in auth/views.py file which is responsible for handling the requests from        user and directing the user to the appropriate web page and create a request in the Deployment::<user>::<timestamp>
    depending upon the activities of the user namely (adding, deleting and creating new deployments). All the user details     are present in the couchbase docuent with format like user::<username>
-3. The deployment requests are stored in couchbase documents in these views
+3. The deployment requests are stored in couchbase documents through these views
 4. The Install folder has a file test.py (driver) which will trigger the processes (InstanceHadler, install) depending on     the value of the request status in the deployment document in database 
 5. The next part of managing the instances(creation, deletion)  is done in InstanceHadler.py
    The logic creation of instances, deletion (management) is maintained in this file. 
