@@ -68,8 +68,7 @@ Working
 Flow:
 1. The home page in the website has the details for provisioning the user to create a new account
 2. If the user is an existing one he can login and manage his deployments
-3. There is an option to create a new deployment for the user where he can select a cloud provider of his choice and 
-   provide the authentication details for the cloud and the parameters of the node to created in the deployment
+3. There is an option to create a new deployment for the user where he can select a cloud provider of his choice and provide the authentication details for the cloud and the parameters of the node to created in the deployment
 4. The user can manage the instances by scaling (adding more servers) and removing the servers as required
 
 ===================================================================================
