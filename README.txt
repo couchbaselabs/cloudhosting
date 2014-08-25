@@ -1,5 +1,4 @@
-
-This software uses the Apache Libcloud Library (Python), Apache Web Server, Django (Python framework) for web development
+﻿This software allows the user to easily manage the deployment of couchbase server to multiple clouds. This software currently supports the cloud providers mainly AWS, RackSpace and Google Cloud. It also supports Azure until the point of creating the instances in Azure cloud. This software uses the Apache Libcloud Library (Python), Apache Web Server, Django (Python framework) for web development
 
 Installation : 
 pip install apache-libcloud
@@ -17,115 +16,18 @@ Libcloud solves this problem and allows user to access provider specific functio
 
 Extension methods are there for your convenience, but you should be careful when you use them because they make switching or working with multiple providers harder.
 
-========================================================================================
-The library has a driver for each of the cloud providers and if you need to add a new cloud provider in future 
-you simply have to check whether it is supported in Libcloud in order to integrate it into this software
-
-The compute component of libcloud allows you to manage cloud and virtual servers offered by different providers, more than 20 in total.
-
-In addition to managing the servers this component also allows you to run deployment scripts on newly created servers. Deployment or “bootstrap” scripts allow you to execute arbitrary shell commands.
-This functionality is usually used to prepare your freshly created server, install your SSH key, and run a configuration management tool (such as Puppet, Chef, or cfengine) on it.
-
-Besides managing cloud and virtual servers, compute component also allows you to manage cloud block storage (not to be confused with cloud object storage) for providers which support it. Block storage management is lives under compute API, because it is in most cases tightly coupled with compute resources.
-
-Terminology
-Compute
-
-    Node - represents a cloud or virtual server.
-    NodeSize - represents node hardware configuration. Usually this is amount of the available RAM, bandwidth, CPU speed and disk size. Most of the drivers also expose an hourly price (in dollars) for the Node of this size.
-    NodeImage - represents an operating system image.
-    NodeLocation - represents a physical location where a server can be.
-    NodeState - represents a node state. Standard states are: running, stopped, rebooting, terminated, pending, and unknown.
-
-=====================================================================================
-Companies using Libcloud
-
-Companies and Organizations
-
-Name: Rackspace
-Website: http://www.rackspace.com/
-
-Name: SixSq
-Website: http://sixsq.com/
-
-Name: CloudControl
-Website: https://www.cloudcontrol.com/
-
-Name: mist.io
-Website: https://mist.io
-
-Name: Cloudkick
-Website: https://www.cloudkick.com
-Reference: Announcing libcloud
-
-Name: GlobalRoute
-Website: http://globalroute.net/
-
-Name: Server Density
-Website: http://www.serverdensity.com/
-Reference: Using vCloud and Amazon CloudWatch with libcloud
-
-Name: CollabNet
-Website: http://www.collab.net/
-Reference: CollabNet Automates Build, Test And DevOps In The Cloud With New Version Of CollabNet Lab Management
-
-Name: Salt Stack
-Website: http://saltstack.com/
-
-Name: Monash eScience and Grid Engineering Laboratory
-Website: http://www.messagelab.monash.edu.au
-
-Name: Scalr
-Website: http://www.scalr.com/
-
-Name: DivvyCloud
-Website: http://www.divvycloud.com/
-
-============================================================================================
-
-
-How do I obtain Libcloud version?
-
-You can obtain currently active Libcloud version by accessing the libcloud.__version__ variable.
-
-Example #1 (command line):
-
-python -c "import libcloud ; print libcloud.__version__"
-
-Example #2 (code):
-
-import libcloud
-libcloud.__version__
-
-======================================================================================
-
-Upgrading
-
-If you used pip to install the library you can also use it to upgrade it:
-
-pip install --upgrade apache-libcloud
-
 =====================================================================================
 
-Using it
+Directory Structure
 
-This section describes a standard work-flow which you follow when working with any of the Libcloud drivers.
+    CouchbaseCloud
+         -->  auth
+         -->  static
+         -->  CouchbaseCloud_Settings
+		-->Templates
+    Install
 
-    Obtain reference to the provider driver
-
-from pprint import pprint
-
-from libcloud.compute.types import Provider
-from libcloud.compute.providers import get_driver
-
-cls = get_driver(Provider.RACKSPACE)
-
-    Instantiate the driver with your provider credentials
-
-driver = cls('my username', 'my api key')
-
-==================================================================================
-=====================================================================================
+=========================================================================================
 
 Deployment
 
@@ -154,11 +56,32 @@ example
 Working 
 
 1. All the HTML Templates are in the Template folder
-2. The handling of client requests are there in auth/views.py file which is responsible for handling the requests from user 
-   and directing the user to the appropriate web page and do the processing
-3. The deployment requests are stored in Couchbase in these views
-4. The Install folder has a file test.py which will trigger the processes (InstanceHadler, install) depending on the value of the request status 
-   in the deployment document in database 
+2. The handling of client requests are there in auth/views.py file which is responsible for handling the requests from        user and directing the user to the appropriate web page and create a request in the Deployment::<user>::<timestamp>
+   depending upon the activities of the user namely (adding, deleting and creating new deployments). All the user details     are present in the couchbase docuent with format like user::<username>
+3. The deployment requests are stored in couchbase documents in these views
+4. The Install folder has a file test.py (driver) which will trigger the processes (InstanceHadler, install) depending on     the value of the request status in the deployment document in database 
 5. The next part of managing the instances(creation, deletion)  is done in InstanceHadler.py
-6. The part of managing the couchbase deployments (installing couchbase on the instances and setting up the cluster) is done in install.py
+   The logic creation of instances, deletion (management) is maintained in this file. 
+6. The part of managing the couchbase deployments (installing couchbase on the instances and setting up the cluster) is       done in install.py
+7. There is a file az.py in the Install folder manages the Azure instances (creation) uses Azure API's
+
+Flow:
+1. The home page in the website has the details for provisioning the user to create a new account
+2. If the user is an existing one he can login and manage his deployments
+3. There is an option to create a new deployment for the user where he can select a cloud provider of his choice and 
+   provide the authentication details for the cloud and the parameters of the node to created in the deployment
+4. The user can manage the instances by scaling (adding more servers) and removing the servers as required
+
+===================================================================================
+
+Executing the program:
+1. Start the apache web server after all the configuration is made as discussed above. The web server should be run as       non-root user
+2. Run test.py using (python test.py) which will turn on the InstanceHadler and install daemon 
+3. Then you can start using the website
+
+=====================================================================================
+
+In case of any doubts you can email me at : srivastava.piush@gmail.com, pasrivas@syr.edu
+
+
  
